@@ -1,29 +1,32 @@
-"""Streamlit UI for transparent nearest-neighbor topic-text exploration."""
+"""Streamlit UI for comparing metadata representations with clustering."""
 
 from __future__ import annotations
 
-import json
+from collections import Counter
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 import numpy as np
 import pandas as pd
-import plotly.express as px
 import streamlit as st
 
 from app.embedding_engine import (
-    MODEL_OPTIONS,
+    DEFAULT_CLUSTERING_METHOD,
+    KMEANS_METHOD,
+    MODEL_NAME,
     REPRESENTATIONS,
-    SOURCE_FIELDS,
-    construct_representation,
-    construct_representations,
-    encode_texts,
+    REPRESENTATION_LABELS,
+    ClusteringParameters,
+    EmbeddingBundle,
+    cluster_all_strategies,
+    cluster_neighbors,
+    cluster_summary,
+    get_or_create_embedding_cache,
     load_jsonl_records,
     load_sentence_transformer,
-    source_field_and_value,
-    text_hash,
-    top_k_retrieval,
-    weighted_top_k_vote,
+    ranked_cluster_members,
+    representative_topics,
+    similarity_to_cluster_representatives,
 )
 
 
@@ -35,11 +38,16 @@ INPUT_FILES = (
     ROOT / "data" / "processed" / "04_open_air_topic_texts.jsonl",
 )
 DATASET_NAMES = ("sgim", "beach_weather", "beach_water", "open_air")
+CACHE_FILES = {
+    strategy: ROOT / "embedding_cache" / f"{strategy.lower()}.npz"
+    for strategy in REPRESENTATIONS
+}
+TAB_LABELS = [REPRESENTATION_LABELS[strategy] for strategy in REPRESENTATIONS]
 
 
-@st.cache_resource(show_spinner="Loading the sentence-transformer model on CPU…")
-def cached_model(model_name: str) -> Any:
-    return load_sentence_transformer(model_name, device="cpu")
+@st.cache_resource(show_spinner="Loading all-MiniLM-L6-v2 on CPU…")
+def cached_model() -> Any:
+    return load_sentence_transformer(MODEL_NAME, device="cpu")
 
 
 @st.cache_data(show_spinner=False)
@@ -49,23 +57,14 @@ def cached_records(
     return load_jsonl_records(Path(path) for path, _, _ in signatures)
 
 
-@st.cache_data(show_spinner=False)
-def cached_representations(
-    serialized_records: tuple[str, ...], representation: str
-) -> tuple[str, ...]:
-    records = [json.loads(value) for value in serialized_records]
-    return tuple(construct_representations(records, representation))
-
-
-@st.cache_data(show_spinner="Encoding topic text locally…")
-def cached_embeddings(
-    model_name: str,
-    representation: str,
-    input_text_hash: str,
-    texts: tuple[str, ...],
-) -> np.ndarray:
-    del representation, input_text_hash  # Included explicitly in the cache key.
-    return encode_texts(cached_model(model_name), texts)
+@st.cache_data(show_spinner=False, max_entries=8)
+def cached_embedding_bundle(
+    signatures: tuple[tuple[str, int, int], ...], strategy: str
+) -> EmbeddingBundle:
+    records = cached_records(signatures)
+    return get_or_create_embedding_cache(
+        CACHE_FILES[strategy], records, strategy, MODEL_NAME, cached_model
+    )
 
 
 def file_signatures() -> tuple[tuple[str, int, int], ...]:
@@ -78,467 +77,371 @@ def file_signatures() -> tuple[tuple[str, int, int], ...]:
     return tuple(signatures)
 
 
-def serialize_records(records: Sequence[Mapping[str, Any]]) -> tuple[str, ...]:
-    return tuple(json.dumps(record, sort_keys=True, ensure_ascii=False) for record in records)
+def subset_bundle(bundle: EmbeddingBundle, datasets: Sequence[str]) -> EmbeddingBundle:
+    mask = np.isin(bundle.datasets, np.asarray(datasets))
+    return EmbeddingBundle(
+        embeddings=bundle.embeddings[mask],
+        topics=bundle.topics[mask],
+        datasets=bundle.datasets[mask],
+        measurement_keys=bundle.measurement_keys[mask],
+        sources=bundle.sources[mask],
+        texts=bundle.texts[mask],
+        model_name=bundle.model_name,
+        text_hash=bundle.text_hash,
+        reused=bundle.reused,
+    )
 
 
-def representations_for(
-    records: Sequence[Mapping[str, Any]], representation: str
-) -> tuple[str, ...]:
-    return cached_representations(serialize_records(records), representation)
+def topic_rows(
+    bundle: EmbeddingBundle,
+    ranked: Sequence[tuple[int, float]],
+) -> pd.DataFrame:
+    return pd.DataFrame(
+        [
+            {
+                "topic": bundle.topics[index],
+                "dataset": bundle.datasets[index],
+                "measurement_key": bundle.measurement_keys[index],
+                "source": bundle.sources[index],
+                "exact embedded text": bundle.texts[index],
+                "similarity to cluster centroid": similarity,
+            }
+            for index, similarity in ranked
+        ]
+    )
 
 
-def embeddings_for(
-    texts: Sequence[str], model_name: str, representation: str
-) -> np.ndarray:
-    values = tuple(texts)
-    return cached_embeddings(model_name, representation, text_hash(values), values)
+def cluster_export_csv(
+    strategy: str,
+    threshold: float,
+    min_samples: int,
+    bundle: EmbeddingBundle,
+    labels: np.ndarray,
+) -> bytes:
+    similarities = similarity_to_cluster_representatives(bundle.embeddings, labels)
+    frame = pd.DataFrame(
+        {
+            "representation": strategy,
+            "threshold": threshold,
+            "min_samples": min_samples,
+            "cluster_id": labels,
+            "is_noise": labels == -1,
+            "topic": bundle.topics,
+            "dataset": bundle.datasets,
+            "source": bundle.sources,
+            "measurement_key": bundle.measurement_keys,
+            "representation_text": bundle.texts,
+            "similarity_to_cluster_representative": similarities,
+        }
+    )
+    return frame.to_csv(index=False).encode("utf-8")
 
 
-def records_for_dataset(
-    records: Sequence[dict[str, Any]], dataset: str
-) -> list[dict[str, Any]]:
-    if dataset == "all":
-        return list(records)
-    return [record for record in records if record["dataset"] == dataset]
+def render_noise(bundle: EmbeddingBundle, labels: np.ndarray, limit: int) -> None:
+    indices = np.flatnonzero(labels == -1)
+    if len(indices) == 0:
+        st.caption("No noise topics at this threshold.")
+        return
+    st.subheader(f"Noise · {len(indices):,} topics")
+    preview = [(int(index), float("nan")) for index in indices[:limit]]
+    st.dataframe(topic_rows(bundle, preview), hide_index=True, width="stretch")
+    expander = st.expander(
+        "Show all noise topics",
+        key=f"noise-{bundle.text_hash}-{len(indices)}",
+        on_change="rerun",
+    )
+    if expander.open:
+        with expander:
+            all_rows = [(int(index), float("nan")) for index in indices]
+            st.dataframe(topic_rows(bundle, all_rows), hide_index=True, width="stretch")
 
 
-def source_value(record: Mapping[str, Any]) -> str:
-    try:
-        _, value = source_field_and_value(record)
-        return value
-    except ValueError:
-        return ""
+def render_clusters(
+    strategy: str,
+    bundle: EmbeddingBundle,
+    labels: np.ndarray,
+    representative_limit: int,
+    include_noise: bool,
+    threshold: float,
+    min_samples: int,
+) -> None:
+    counts = Counter(int(label) for label in labels if int(label) != -1)
+    ordered_clusters = sorted(counts, key=lambda cluster_id: (-counts[cluster_id], cluster_id))
+    st.caption(
+        f"Clusters are ordered by size. Representative topics are nearest to each "
+        f"cluster's normalized mean embedding. Model: `{MODEL_NAME}`."
+    )
+    ready_key = f"csv-ready-{strategy}-{bundle.text_hash}-{threshold:.2f}-{min_samples}"
+    if st.button(
+        f"Prepare {REPRESENTATION_LABELS[strategy]} CSV",
+        key=f"prepare-{ready_key}",
+        icon=":material/download:",
+    ):
+        st.session_state[ready_key] = True
+    if st.session_state.get(ready_key, False):
+        csv_bytes = cluster_export_csv(
+            strategy, threshold, min_samples, bundle, labels
+        )
+        st.download_button(
+            f"Download {REPRESENTATION_LABELS[strategy]} assignments",
+            data=csv_bytes,
+            file_name=f"{strategy.lower()}_clusters.csv",
+            mime="text/csv",
+            icon=":material/download:",
+            key=f"download-{ready_key}",
+        )
+    if not ordered_clusters:
+        st.warning("No clusters emerged from the selected parameters.")
+    for cluster_id in ordered_clusters:
+        member_indices = np.flatnonzero(labels == cluster_id)
+        member_keys = bundle.measurement_keys[member_indices].tolist()
+        dominant = Counter(member_keys).most_common(5)
+        ranked_all = ranked_cluster_members(bundle.embeddings, labels, cluster_id)
+        mean_similarity = float(np.mean([score for _, score in ranked_all]))
+        with st.container(border=True):
+            st.subheader(f"Cluster {cluster_id} · {len(member_indices):,} topics")
+            st.write(
+                f"**Datasets:** {', '.join(sorted(set(bundle.datasets[member_indices])))}  \n"
+                f"**Unique measurement keys:** {len(set(member_keys)):,}  \n"
+                f"**Dominant measurement keys:** "
+                + ", ".join(f"{key} ({count})" for key, count in dominant)
+                + f"  \n**Mean similarity to representative:** {mean_similarity:.6f}"
+            )
+            st.markdown(f"**Top {min(representative_limit, len(member_indices))} representative topics**")
+            representatives = representative_topics(
+                bundle.embeddings, labels, cluster_id, representative_limit
+            )
+            st.dataframe(
+                topic_rows(bundle, representatives),
+                hide_index=True,
+                width="stretch",
+                column_config={
+                    "similarity to cluster centroid": st.column_config.NumberColumn(format="%.6f")
+                },
+            )
+            expander = st.expander(
+                "Show all topics in this cluster",
+                key=f"all-{strategy}-{bundle.text_hash}-{cluster_id}",
+                on_change="rerun",
+            )
+            if expander.open:
+                with expander:
+                    st.dataframe(
+                        topic_rows(bundle, ranked_all),
+                        hide_index=True,
+                        width="stretch",
+                        column_config={
+                            "similarity to cluster centroid": st.column_config.NumberColumn(format="%.6f")
+                        },
+                    )
+    if include_noise:
+        render_noise(bundle, labels, representative_limit)
 
 
-def retrieval_table(
-    neighbors: Sequence[Mapping[str, Any]], candidate_texts: Sequence[str]
+def comparison_rows(
+    bundles: Mapping[str, EmbeddingBundle],
+    labels_by_strategy: Mapping[str, np.ndarray],
+    threshold: float,
 ) -> pd.DataFrame:
     rows = []
-    for neighbor in neighbors:
+    for strategy in REPRESENTATIONS:
+        summary = cluster_summary(labels_by_strategy[strategy])
         rows.append(
             {
-                "rank": neighbor["rank"],
-                "cosine_similarity": neighbor["cosine_similarity"],
-                "dataset": neighbor.get("dataset"),
-                "topic": neighbor.get("topic"),
-                "measurement_key": neighbor.get("measurement_key"),
-                "source_value": source_value(neighbor),
-                "candidate_representation": candidate_texts[
-                    int(neighbor["candidate_index"])
-                ],
+                "representation": strategy,
+                "similarity_threshold": threshold,
+                "cluster_count": summary["cluster_count"],
+                "noise_count": summary["noise_count"],
+                "largest_cluster_size": summary["largest_cluster_size"],
+                "median_cluster_size": summary["median_cluster_size"],
+                "unique_text_count": len(set(bundles[strategy].texts.tolist())),
             }
         )
     return pd.DataFrame(rows)
 
 
-def similarity_chart(table: pd.DataFrame, title: str) -> None:
-    if table.empty:
-        return
-    chart_data = table.sort_values("cosine_similarity", ascending=True).copy()
-    chart_data["label"] = chart_data["rank"].astype(str) + ". " + chart_data[
-        "measurement_key"
-    ].astype(str)
-    figure = px.bar(
-        chart_data,
-        x="cosine_similarity",
-        y="label",
-        orientation="h",
-        hover_data=["topic", "dataset", "source_value"],
-        title=title,
-    )
-    figure.update_layout(yaxis_title="Neighbor", xaxis_title="Cosine similarity")
-    st.plotly_chart(figure, width="stretch")
-
-
-def transparency_panel(
-    query_embedding: np.ndarray,
-    neighbors: Sequence[Mapping[str, Any]],
-    vote: Mapping[str, Any],
-) -> None:
-    with st.expander("How this prediction was produced"):
-        st.markdown(
-            """
-1. Query text was converted into an embedding vector.
-2. Candidate topic text records were converted into vectors using the same model.
-3. Embeddings were L2-normalized.
-4. Cosine similarity was calculated.
-5. Candidates were sorted from highest to lowest similarity.
-6. Top-1 prediction used the nearest candidate's measurement_key.
-7. Weighted prediction summed top-k similarity scores by measurement_key.
-"""
+def selected_topic_comparison(
+    selected_topic: str,
+    bundles: Mapping[str, EmbeddingBundle],
+    labels_by_strategy: Mapping[str, np.ndarray],
+    limit: int,
+) -> pd.DataFrame:
+    rows = []
+    baseline_neighbors: tuple[str, ...] | None = None
+    for strategy in REPRESENTATIONS:
+        bundle = bundles[strategy]
+        selected = int(np.flatnonzero(bundle.topics == selected_topic)[0])
+        labels = labels_by_strategy[strategy]
+        neighbors = cluster_neighbors(selected, bundle.embeddings, labels, limit)
+        neighbor_topics = tuple(str(bundle.topics[index]) for index, _ in neighbors)
+        if baseline_neighbors is None:
+            baseline_neighbors = neighbor_topics
+        rows.append(
+            {
+                "representation": strategy,
+                "cluster_id": int(labels[selected]),
+                "cluster_neighbor_count": int(np.sum(labels == labels[selected]) - 1)
+                if labels[selected] != -1
+                else 0,
+                "nearest cluster neighbors": " | ".join(neighbor_topics) or "None (noise or singleton)",
+                "differs from VALUE_ONLY": neighbor_topics != baseline_neighbors,
+            }
         )
-        st.write(f"Query vector dimension: `{query_embedding.shape[0]}`")
-        st.write(f"Query vector L2 norm: `{np.linalg.norm(query_embedding):.8f}`")
-        st.dataframe(
-            pd.DataFrame(
-                [
-                    {
-                        "rank": neighbor["rank"],
-                        "topic": neighbor["topic"],
-                        "measurement_key": neighbor["measurement_key"],
-                        "cosine_similarity": neighbor["cosine_similarity"],
-                    }
-                    for neighbor in neighbors
-                ]
-            ),
-            width="stretch",
-            hide_index=True,
+    return pd.DataFrame(rows)
+
+
+st.set_page_config(page_title="SmartMQTT embedding clustering explorer", layout="wide")
+st.title("SmartMQTT embedding clustering explorer")
+st.write(
+    "Compare how four deterministic metadata-text representations change "
+    "unsupervised topic clusters. This is clustering, not classification."
+)
+st.info(
+    "DBSCAN uses cosine distance and derives its cluster count from the selected "
+    "similarity threshold (`eps = 1 - similarity_threshold`). Label `-1` is noise. "
+    "The same all-MiniLM-L6-v2 model, normalized embeddings, record order, and "
+    "clustering parameters are used for every representation."
+)
+
+try:
+    signatures = file_signatures()
+    records = cached_records(signatures)
+except (FileNotFoundError, ValueError) as error:
+    st.error(f"Cannot load topic-text inputs: {error}")
+    st.stop()
+
+st.session_state.setdefault("clustering_requested", False)
+with st.sidebar:
+    st.header("Clustering controls")
+    with st.form("clustering-controls"):
+        selected_datasets = st.multiselect(
+            "Datasets to include", DATASET_NAMES, default=DATASET_NAMES
         )
-        st.write("Weighted score for each candidate label:")
-        st.json(vote["score_by_label"])
-        if st.checkbox("Display first 20 query embedding components", key=f"components-{id(query_embedding)}"):
-            st.code(np.array2string(query_embedding[:20], precision=6))
-
-
-def prediction_panel(
-    query_embedding: np.ndarray,
-    neighbors: Sequence[Mapping[str, Any]],
-    candidate_texts: Sequence[str],
-    title: str,
-) -> None:
-    table = retrieval_table(neighbors, candidate_texts)
-    if table.empty:
-        st.warning("No candidates met the selected similarity threshold.")
-        return
-    st.dataframe(
-        table,
-        width="stretch",
-        hide_index=True,
-        column_config={"cosine_similarity": st.column_config.NumberColumn(format="%.6f")},
-    )
-    similarity_chart(table, title)
-    vote = weighted_top_k_vote(neighbors)
-    top_one = neighbors[0]["measurement_key"]
-    first, second = st.columns(2)
-    first.metric("Top-1 predicted measurement_key", str(top_one))
-    weighted = vote["predicted_label"] or "No confident weighted prediction"
-    second.metric("Weighted top-k predicted measurement_key", weighted)
-    st.write("Weighted score per label:")
-    st.dataframe(
-        pd.DataFrame(
-            [
-                {"measurement_key": label, "weighted_score": score}
-                for label, score in vote["score_by_label"].items()
-            ]
-        ),
-        width="stretch",
-        hide_index=True,
-    )
-    st.write("Neighbors contributing positive weight:")
-    st.dataframe(
-        pd.DataFrame(vote["contributing_neighbors"]),
-        width="stretch",
-        hide_index=True,
-    )
-    transparency_panel(query_embedding, neighbors, vote)
-
-
-def run_retrieval(
-    query_text: str,
-    candidates: Sequence[dict[str, Any]],
-    candidate_representation: str,
-    model_name: str,
-    top_k: int,
-    minimum_similarity: float,
-    *,
-    query_topic: str | None = None,
-    exclude_self: bool = False,
-) -> tuple[np.ndarray, tuple[str, ...], list[dict[str, Any]]]:
-    candidate_texts = representations_for(candidates, candidate_representation)
-    candidate_vectors = embeddings_for(
-        candidate_texts, model_name, candidate_representation
-    )
-    query_vector = embeddings_for(
-        (query_text,), model_name, f"query::{candidate_representation}"
-    )[0]
-    neighbors = top_k_retrieval(
-        candidates,
-        candidate_vectors,
-        query_vector,
-        top_k,
-        query_topic=query_topic,
-        exclude_self=exclude_self,
-        minimum_similarity=minimum_similarity,
-    )
-    return query_vector, candidate_texts, neighbors
-
-
-def render_audit(records: list[dict[str, Any]]) -> None:
-    st.subheader("Combined topic-text dataset audit")
-    frame = pd.DataFrame(records)
-    counts = frame.groupby("dataset").size().rename("records")
-    missing_count = sum(
-        not record.get("topic")
-        or not record.get("measurement_key")
-        or not str(record.get("text", "")).strip()
-        for record in records
-    )
-    duplicate_count = len(frame) - frame["topic"].nunique()
-    columns = st.columns(5)
-    columns[0].metric("Total records", len(frame))
-    columns[1].metric("Unique topics", frame["topic"].nunique())
-    columns[2].metric("Unique measurement keys", frame["measurement_key"].nunique())
-    columns[3].metric("Duplicate topics", duplicate_count)
-    columns[4].metric("Missing required fields", missing_count)
-    st.write("Records by dataset:")
-    st.dataframe(counts.reset_index(), hide_index=True, width="stretch")
-    st.write("Measurement counts by dataset:")
-    measurement_counts = (
-        frame.groupby(["dataset", "measurement_key"]).size().rename("topic_count").reset_index()
-    )
-    st.dataframe(measurement_counts, hide_index=True, width="stretch")
-    search = st.text_input("Search topic records", key="audit-search").strip().lower()
-    display = frame.copy()
-    if search:
-        display = display[
-            display.astype(str).apply(
-                lambda row: row.str.lower().str.contains(search, regex=False).any(), axis=1
+        similarity_threshold = st.slider(
+            "Similarity threshold", 0.50, 0.99, 0.80, 0.01
+        )
+        min_samples = st.number_input("Minimum samples", 1, 50, 2, 1)
+        representative_limit = st.number_input(
+            "Topics displayed per cluster", 1, 50, 5, 1
+        )
+        include_noise = st.toggle("Include noise", value=True)
+        with st.expander("Advanced clustering method", expanded=False):
+            method = st.selectbox(
+                "Clustering method", (DEFAULT_CLUSTERING_METHOD, KMEANS_METHOD)
             )
-        ]
-    st.dataframe(display, width="stretch", hide_index=True)
-    selected_topic = st.selectbox("Inspect raw JSON record", display["topic"].tolist())
-    selected = next(record for record in records if record["topic"] == selected_topic)
-    st.json(selected)
-
-
-def render_existing_topic(
-    records: list[dict[str, Any]],
-    source_dataset: str,
-    target_dataset: str,
-    representation: str,
-    model_name: str,
-    top_k: int,
-    exclude_self: bool,
-    minimum_similarity: float,
-) -> None:
-    query_records = records_for_dataset(records, source_dataset)
-    query_topic = st.selectbox(
-        "Existing query topic", [record["topic"] for record in query_records]
-    )
-    query_record = next(record for record in query_records if record["topic"] == query_topic)
-    query_text = construct_representation(query_record, representation)
-    st.write("Raw query record:")
-    st.json(query_record)
-    st.write(f"Measurement key: `{query_record['measurement_key']}`")
-    st.write("Source metadata:")
-    st.json({field: query_record[field] for field in SOURCE_FIELDS if field in query_record})
-    st.write("Exact representation sent to the embedding model:")
-    st.code(query_text)
-    effective_exclusion = exclude_self and (
-        target_dataset == "all" or target_dataset == source_dataset
-    )
-    if st.button("Run existing-topic retrieval", type="primary"):
-        candidates = records_for_dataset(records, target_dataset)
-        try:
-            query_vector, candidate_texts, neighbors = run_retrieval(
-                query_text,
-                candidates,
-                representation,
-                model_name,
-                top_k,
-                minimum_similarity,
-                query_topic=query_topic,
-                exclude_self=effective_exclusion,
-            )
-        except Exception as error:  # Model/download errors should be readable in the UI.
-            st.error(f"Embedding or retrieval failed: {error}")
-            return
-        st.write(f"Embedding dimension: `{query_vector.shape[0]}`")
-        st.write(f"Embedding L2 norm: `{np.linalg.norm(query_vector):.8f}`")
-        prediction_panel(
-            query_vector, neighbors, candidate_texts, "Top-k existing-topic matches"
+            k = None
+            if method == KMEANS_METHOD:
+                k = st.number_input("K-means k", 1, max(1, len(records)), 10, 1)
+        submitted = st.form_submit_button(
+            "Run clustering", type="primary", icon=":material/hub:"
         )
+    st.caption(f"Embedding model: {MODEL_NAME} · CPU")
 
+if submitted:
+    st.session_state.clustering_requested = True
 
-def render_free_text(
-    records: list[dict[str, Any]],
-    target_dataset: str,
-    representation: str,
-    model_name: str,
-    top_k: int,
-    minimum_similarity: float,
-) -> None:
-    raw_query = st.text_area(
-        "Free-text query",
-        value="air temperature",
-        help="Examples: wind speed, water turbidity, soil moisture, ambient humidity, PM2.5 mass concentration",
-    ).strip()
-    wrap = st.checkbox("Use wrapper: query: {user text}")
-    embedded_text = f"query: {raw_query}" if wrap else raw_query
-    st.write("Raw query:")
-    st.code(raw_query)
-    st.write("Final text sent to the embedding model:")
-    st.code(embedded_text)
-    if st.button("Run free-text retrieval", type="primary", disabled=not raw_query):
-        candidates = records_for_dataset(records, target_dataset)
-        try:
-            query_vector, candidate_texts, neighbors = run_retrieval(
-                embedded_text,
-                candidates,
-                representation,
-                model_name,
-                top_k,
-                minimum_similarity,
-            )
-        except Exception as error:
-            st.error(f"Embedding or retrieval failed: {error}")
-            return
-        st.write(f"Embedding dimension: `{query_vector.shape[0]}`")
-        st.write(f"Embedding L2 norm: `{np.linalg.norm(query_vector):.8f}`")
-        prediction_panel(query_vector, neighbors, candidate_texts, "Top-k free-text matches")
+if not selected_datasets:
+    st.warning("Select at least one dataset.")
+    st.stop()
 
-
-def render_comparison(
-    records: list[dict[str, Any]],
-    source_dataset: str,
-    target_dataset: str,
-    model_name: str,
-    exclude_self: bool,
-    minimum_similarity: float,
-) -> None:
-    query_records = records_for_dataset(records, source_dataset)
-    query_topic = st.selectbox(
-        "Topic to compare across representations",
-        [record["topic"] for record in query_records],
-        key="comparison-topic",
-    )
-    query_record = next(record for record in query_records if record["topic"] == query_topic)
-    st.json(query_record)
-    if st.button("Compare all representations", type="primary"):
-        candidates = records_for_dataset(records, target_dataset)
-        effective_exclusion = exclude_self and (
-            target_dataset == "all" or target_dataset == source_dataset
-        )
-        comparison_rows: list[dict[str, Any]] = []
-        for representation in REPRESENTATIONS:
-            query_text = construct_representation(query_record, representation)
-            try:
-                _, candidate_texts, neighbors = run_retrieval(
-                    query_text,
-                    candidates,
-                    representation,
-                    model_name,
-                    5,
-                    minimum_similarity,
-                    query_topic=query_topic,
-                    exclude_self=effective_exclusion,
-                )
-            except Exception as error:
-                st.error(f"{representation} failed: {error}")
-                return
-            top = neighbors[0] if neighbors else {}
-            comparison_rows.append(
-                {
-                    "representation": representation,
-                    "embedded_text": query_text,
-                    "top_1_topic": top.get("topic"),
-                    "top_1_measurement_key": top.get("measurement_key"),
-                    "cosine_similarity": top.get("cosine_similarity"),
-                    "changed_from_query_label": (
-                        top.get("measurement_key") != query_record["measurement_key"]
-                        if top
-                        else None
-                    ),
-                }
-            )
-            st.markdown(f"#### {representation}")
-            st.write("Embedded text:")
-            st.code(query_text)
-            if neighbors:
-                st.write(
-                    f"Top-1: `{top['topic']}` → `{top['measurement_key']}` "
-                    f"(cosine `{top['cosine_similarity']:.6f}`)"
-                )
-                st.dataframe(
-                    retrieval_table(neighbors, candidate_texts),
-                    width="stretch",
-                    hide_index=True,
-                )
-            else:
-                st.warning("No candidate met the similarity threshold.")
-        st.subheader("Representation comparison")
-        st.dataframe(pd.DataFrame(comparison_rows), width="stretch", hide_index=True)
-        st.caption(
-            "Changes involving source-bearing representations may indicate that source names are influencing retrieval."
-        )
-
-
-def main() -> None:
-    st.set_page_config(page_title="SmartMQTT Embedding Explorer", layout="wide")
-    st.title("SmartMQTT Embedding Explorer")
+if not st.session_state.clustering_requested:
+    st.subheader("Ready to compare representations")
     st.write(
-        "Inspect sentence-embedding nearest neighbors and provisional measurement-key voting."
+        "Choose the datasets and threshold, then press **Run clustering**. "
+        "The first run creates the four ignored NPZ embedding caches; matching "
+        "model and text hashes reuse them on later runs."
     )
-    st.warning(
-        "This is nearest-neighbor semantic retrieval, not a trained classifier. "
-        "measurement_key is a provisional label. Similarity does not establish scientific "
-        "equivalence. Cross-dataset accuracy cannot be claimed until a curated ground-truth "
-        "mapping exists. Source names may introduce location bias. The source-only "
-        "representation is a negative-control representation."
-    )
-    try:
-        records = cached_records(file_signatures())
-    except (FileNotFoundError, ValueError) as error:
-        st.error(f"Cannot load topic-text inputs: {error}")
-        st.stop()
+    placeholder_tabs = st.tabs(TAB_LABELS)
+    for tab, label in zip(placeholder_tabs, TAB_LABELS):
+        with tab:
+            st.caption(f"{label} cluster details will appear after clustering runs.")
+    st.stop()
 
-    with st.sidebar:
-        st.header("Retrieval controls")
-        model_name = st.selectbox("Model name", MODEL_OPTIONS)
-        representation = st.selectbox("Representation", REPRESENTATIONS)
-        source_dataset = st.selectbox("Source dataset", DATASET_NAMES)
-        target_dataset = st.selectbox("Target dataset", ("all", *DATASET_NAMES))
-        top_k = st.slider("Top-k", 1, 25, 10)
-        exclude_self = st.checkbox("Exclude exact topic/self-match", value=True)
-        minimum_similarity = st.slider(
-            "Minimum cosine similarity", -1.0, 1.0, 0.0, 0.01
-        )
-        if st.button("Clear embedding cache"):
-            cached_embeddings.clear()
-            st.success("Embedding cache cleared.")
-        st.caption("Inference device: CPU")
+parameters = ClusteringParameters(
+    similarity_threshold=float(similarity_threshold),
+    min_samples=int(min_samples),
+    method=method,
+    k=int(k) if k is not None else None,
+)
 
-    audit_tab, existing_tab, free_text_tab, comparison_tab = st.tabs(
-        (
-            "Dataset Audit",
-            "Existing Topic Explorer",
-            "Free-Text Query",
-            "Representation Comparison",
+try:
+    with st.spinner("Loading or creating normalized embedding caches…"):
+        full_bundles = {
+            strategy: cached_embedding_bundle(signatures, strategy)
+            for strategy in REPRESENTATIONS
+        }
+        reference_topics = full_bundles[REPRESENTATIONS[0]].topics
+        if any(
+            not np.array_equal(reference_topics, full_bundles[strategy].topics)
+            for strategy in REPRESENTATIONS[1:]
+        ):
+            raise ValueError("Embedding caches do not use the same topic order")
+        bundles = {
+            strategy: subset_bundle(full_bundles[strategy], selected_datasets)
+            for strategy in REPRESENTATIONS
+        }
+        labels_by_strategy = cluster_all_strategies(
+            {strategy: bundle.embeddings for strategy, bundle in bundles.items()},
+            parameters,
         )
-    )
-    with audit_tab:
-        render_audit(records)
-    with existing_tab:
-        render_existing_topic(
-            records,
-            source_dataset,
-            target_dataset,
-            representation,
-            model_name,
-            top_k,
-            exclude_self,
-            minimum_similarity,
-        )
-    with free_text_tab:
-        render_free_text(
-            records,
-            target_dataset,
-            representation,
-            model_name,
-            top_k,
-            minimum_similarity,
-        )
-    with comparison_tab:
-        render_comparison(
-            records,
-            source_dataset,
-            target_dataset,
-            model_name,
-            exclude_self,
-            minimum_similarity,
-        )
+except Exception as error:
+    st.error(f"Embedding or clustering failed: {error}")
+    st.stop()
 
+st.subheader("Primary cross-strategy comparison")
+comparison = comparison_rows(bundles, labels_by_strategy, similarity_threshold)
+st.dataframe(
+    comparison,
+    hide_index=True,
+    width="stretch",
+    column_config={
+        "similarity_threshold": st.column_config.NumberColumn(format="%.2f"),
+        "median_cluster_size": st.column_config.NumberColumn(format="%.1f"),
+    },
+)
 
-if __name__ == "__main__":
-    main()
+st.subheader("Representation summaries")
+for strategy in REPRESENTATIONS:
+    summary = cluster_summary(labels_by_strategy[strategy])
+    with st.container(border=True):
+        st.markdown(f"**{REPRESENTATION_LABELS[strategy]}**")
+        with st.container(horizontal=True):
+            st.metric("Topics", len(bundles[strategy].topics), border=True)
+            st.metric(
+                "Unique texts", len(set(bundles[strategy].texts.tolist())), border=True
+            )
+            st.metric("Clusters", summary["cluster_count"], border=True)
+            st.metric("Noise", summary["noise_count"], border=True)
+            st.metric("Largest", summary["largest_cluster_size"], border=True)
+            st.metric("Median", f"{summary['median_cluster_size']:.1f}", border=True)
+            st.metric("Singletons", summary["singleton_count"], border=True)
+
+st.subheader("Selected-topic cluster neighbors")
+selected_topic = st.selectbox(
+    "Topic to compare", bundles[REPRESENTATIONS[0]].topics.tolist()
+)
+st.dataframe(
+    selected_topic_comparison(
+        selected_topic, bundles, labels_by_strategy, int(representative_limit)
+    ),
+    hide_index=True,
+    width="stretch",
+)
+st.caption(
+    "Neighbor lists contain other topics assigned to the selected topic's cluster, "
+    "ranked by cosine similarity to the selected topic."
+)
+
+tabs = st.tabs(TAB_LABELS, on_change="rerun", key="representation-tabs")
+for strategy, tab in zip(REPRESENTATIONS, tabs):
+    if tab.open:
+        with tab:
+            render_clusters(
+                strategy,
+                bundles[strategy],
+                labels_by_strategy[strategy],
+                int(representative_limit),
+                include_noise,
+                float(similarity_threshold),
+                int(min_samples),
+            )

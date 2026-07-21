@@ -77,22 +77,35 @@ python scripts/extract_unique_topic_texts.py --dataset beach_water --overwrite
 The original CSV files are ignored by Git and remain unchanged. Existing output
 files are protected by default; pass `--overwrite` when replacement is intended.
 
-## Local embedding explorer
+## Local embedding clustering explorer
 
-The Streamlit application in `app/embedding_explorer.py` provides transparent,
-interactive semantic retrieval over the four processed topic-text files. It is
-nearest-neighbor exploration, not a trained classifier: it embeds a query and
-candidate texts with `sentence-transformers/all-MiniLM-L6-v2`, L2-normalizes the
-vectors, ranks candidates by cosine similarity, and reports top-1 and weighted
-top-k provisional `measurement_key` predictions. No accuracy claim or synthetic
-ground truth is produced.
+The one-page Streamlit application in `app/embedding_explorer.py` compares how
+four deterministic metadata-text representations affect unsupervised clustering
+of the same logical topics. This is clustering, not classification, and it does
+not calculate accuracy or treat `measurement_key` as ground truth.
 
-Supported text representations are:
+The experiment holds the record order, embedding model, L2 normalization, and
+clustering parameters constant while comparing:
 
-- current extracted `text`;
-- measurement only;
-- source plus measurement;
-- source only as a negative control.
+- `VALUE_ONLY`;
+- `KEY_ONLY`;
+- `KEY_VALUE`;
+- `NORMALIZED_KEY_VALUE`.
+
+Dataset-specific metadata fields retain their fixed order. Normalization is
+deterministic: text is lowercased, underscores become spaces, and repeated
+whitespace is collapsed. It does not infer synonyms or scientific meanings.
+
+Every strategy uses `sentence-transformers/all-MiniLM-L6-v2` on CPU. Its
+normalized embedding matrix and aligned metadata are persisted in ignored NPZ
+files under `embedding_cache/`. A cache is reused only when both its model name
+and representation-text hash match the current input; otherwise it is rebuilt.
+
+DBSCAN with cosine distance is the default clustering method. The UI converts
+the selected similarity threshold to DBSCAN distance with
+`eps = 1 - similarity_threshold`, uses label `-1` for noise, and lets the number
+of clusters emerge from the threshold. K-means is available only as an explicit
+fixed-k baseline.
 
 The explorer reads:
 
@@ -134,3 +147,9 @@ project-local temporary directory automatically:
 ```powershell
 .\scripts\run_embedding_ui.ps1
 ```
+
+Choose datasets and clustering parameters in the sidebar and press **Run
+clustering**. The primary comparison table reports cluster and noise behavior
+across all four representations. Each representation tab shows clusters ordered
+by size, centroid-nearest representative topics, expandable full membership,
+separate noise records, and a lazily generated CSV download.
