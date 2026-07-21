@@ -1,0 +1,950 @@
+[ {
+  "id" : 302574356,
+  "name" : "Measurement Title",
+  "dataTypeName" : "text",
+  "description" : "Full title description of measurement, including name of location and measurement description.",
+  "fieldName" : "measurement_title",
+  "position" : 1,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092016,
+  "width" : 397,
+  "cachedContents" : {
+    "largest" : "UI Labs Bioswale - Thunder 1: TM1 Temp Sensor",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "UI Labs Bioswale - Thunder 1: TM1 Temp Sensor",
+      "count" : "553058"
+    }, {
+      "item" : "UI Labs Bioswale - Thunder 1: SM1 Soil Moisture Sensor",
+      "count" : "553057"
+    }, {
+      "item" : "Langley - Cumulus: Bioswale Calibrated VWC",
+      "count" : "529160"
+    }, {
+      "item" : "Langley - Thunder 1: TM1 Temp Sensor",
+      "count" : "528093"
+    }, {
+      "item" : "Langley - Thunder 1: SM1 Soil Moisture Sensor",
+      "count" : "528082"
+    }, {
+      "item" : "Argyle - Thunder 1: TM1 Temp Sensor",
+      "count" : "520707"
+    }, {
+      "item" : "Argyle - Thunder 1: SM1 Soil Moisture Sensor",
+      "count" : "520706"
+    }, {
+      "item" : "Argyle - Thunder 1: MK-III Weather Station Temp",
+      "count" : "496464"
+    }, {
+      "item" : "Argyle - Thunder 1: MK-III Weather Station RH",
+      "count" : "496458"
+    }, {
+      "item" : "Argyle - Thunder 1: MK-III Weather Station Pressure",
+      "count" : "496457"
+    }, {
+      "item" : "Argyle - Thunder 1: MK-III Weather Station Wind Speed",
+      "count" : "496452"
+    }, {
+      "item" : "Argyle - Thunder 1: MK-III Weather Station Rainfall",
+      "count" : "496451"
+    }, {
+      "item" : "Argyle - Thunder 1: MK-III Weather Station Wind Direction",
+      "count" : "496449"
+    }, {
+      "item" : "Argyle - Cumulus: Weather Station Pressure",
+      "count" : "425691"
+    }, {
+      "item" : "Argyle - Cumulus: Weather Station Wind Speed",
+      "count" : "425690"
+    }, {
+      "item" : "Argyle - Cumulus: Weather Station Air Temp",
+      "count" : "425689"
+    }, {
+      "item" : "Argyle - Cumulus: Weather Station Rainfall",
+      "count" : "425688"
+    }, {
+      "item" : "UI Labs Bioswale - Cumulus: Weather Station Air Temp",
+      "count" : "342474"
+    }, {
+      "item" : "UI Labs Bioswale - Cumulus: Weather Station Pressure",
+      "count" : "342184"
+    }, {
+      "item" : "UI Labs Bioswale - Cumulus: Weather Station Wind Speed",
+      "count" : "342091"
+    } ],
+    "smallest" : "Argyle - Cumulus: Bioswale Calibrated VWC",
+    "count" : "13299699",
+    "cardinality" : "39"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left",
+    "aggregate" : "count"
+  }
+}, {
+  "id" : 302574357,
+  "name" : "Measurement Description",
+  "dataTypeName" : "text",
+  "description" : "Description of the type of sensor providing the reading.",
+  "fieldName" : "measurement_description",
+  "position" : 2,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092024,
+  "width" : 256,
+  "cachedContents" : {
+    "largest" : "TM1 Temp Sensor",
+    "non_null" : "9185170",
+    "null" : "4114529",
+    "top" : [ {
+      "item" : "TM1 Temp Sensor",
+      "count" : "1601858"
+    }, {
+      "item" : "SM1 Soil Moisture Sensor",
+      "count" : "1601845"
+    }, {
+      "item" : "MK-III Weather Station Temp",
+      "count" : "997371"
+    }, {
+      "item" : "MK-III Weather Station Pressure",
+      "count" : "997130"
+    }, {
+      "item" : "MK-III Weather Station Wind Speed",
+      "count" : "997005"
+    }, {
+      "item" : "MK-III Weather Station Wind Direction",
+      "count" : "996909"
+    }, {
+      "item" : "MK-III Weather Station Rainfall",
+      "count" : "996787"
+    }, {
+      "item" : "MK-III Weather Station RH",
+      "count" : "996265"
+    } ],
+    "smallest" : "MK-III Weather Station Pressure",
+    "count" : "13299699",
+    "cardinality" : "8"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574358,
+  "name" : "Measurement Type",
+  "dataTypeName" : "text",
+  "description" : "Description of the measurement.",
+  "fieldName" : "measurement_type",
+  "position" : 3,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092053,
+  "width" : 194,
+  "cachedContents" : {
+    "largest" : "WindSpeed",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "Temperature",
+      "count" : "3531654"
+    }, {
+      "item" : "SoilMoisture",
+      "count" : "2327524"
+    }, {
+      "item" : "DifferentialPressure",
+      "count" : "1929261"
+    }, {
+      "item" : "WindSpeed",
+      "count" : "1929064"
+    }, {
+      "item" : "CumulativePrecipitation",
+      "count" : "1586785"
+    }, {
+      "item" : "WindDirection",
+      "count" : "996909"
+    }, {
+      "item" : "RelativeHumidity",
+      "count" : "996265"
+    }, {
+      "item" : "TimeWindowBoundary",
+      "count" : "2237"
+    } ],
+    "smallest" : "CumulativePrecipitation",
+    "count" : "13299699",
+    "cardinality" : "8"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574359,
+  "name" : "Measurement Medium",
+  "dataTypeName" : "text",
+  "description" : "Whether the measurement pertains to the atmosphere or soil.",
+  "fieldName" : "measurement_medium",
+  "position" : 4,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092054,
+  "width" : 193,
+  "cachedContents" : {
+    "largest" : "Soil",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "Atmosphere",
+      "count" : "7583325"
+    }, {
+      "item" : "NA",
+      "count" : "4114529"
+    }, {
+      "item" : "Soil",
+      "count" : "1601845"
+    } ],
+    "smallest" : "Atmosphere",
+    "count" : "13299699",
+    "cardinality" : "3"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574360,
+  "name" : "Measurement Time",
+  "dataTypeName" : "calendar_date",
+  "description" : "Time the Measurement Value relates to in Central Daylight Time (UTC -5).",
+  "fieldName" : "measurement_time",
+  "position" : 5,
+  "renderTypeName" : "calendar_date",
+  "tableColumnId" : 46092055,
+  "width" : 176,
+  "cachedContents" : {
+    "largest" : "2018-05-04T07:00:00.000",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "2017-04-08T21:37:23.000",
+      "count" : "29"
+    }, {
+      "item" : "2017-04-12T10:37:55.000",
+      "count" : "29"
+    }, {
+      "item" : "2017-04-25T19:36:37.000",
+      "count" : "29"
+    }, {
+      "item" : "2017-05-22T23:37:42.000",
+      "count" : "29"
+    }, {
+      "item" : "2017-04-20T08:48:34.000",
+      "count" : "28"
+    }, {
+      "item" : "2017-04-20T08:37:11.000",
+      "count" : "28"
+    }, {
+      "item" : "2017-05-14T03:19:45.000",
+      "count" : "27"
+    }, {
+      "item" : "2017-04-13T15:09:38.000",
+      "count" : "27"
+    }, {
+      "item" : "2017-04-05T11:45:36.000",
+      "count" : "27"
+    }, {
+      "item" : "2017-11-16T23:14:04.000",
+      "count" : "26"
+    }, {
+      "item" : "2017-05-22T12:53:12.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-05-13T23:24:41.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-11-23T16:19:29.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-05-14T03:21:50.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-05-10T13:43:08.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-04-12T20:43:04.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-05-18T14:13:32.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-05-15T00:00:22.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-05-13T21:40:34.000",
+      "count" : "24"
+    }, {
+      "item" : "2017-05-05T08:45:05.000",
+      "count" : "24"
+    } ],
+    "smallest" : "2017-03-10T13:54:48.000",
+    "count" : "13299699",
+    "cardinality" : "2792934"
+  },
+  "format" : {
+    "view" : "date_time",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574361,
+  "name" : "Measurement Value",
+  "dataTypeName" : "number",
+  "description" : "Value related to the sensor reading, in units expressed in \"Units\" column.",
+  "fieldName" : "measurement_value",
+  "position" : 6,
+  "renderTypeName" : "number",
+  "tableColumnId" : 46092056,
+  "width" : 177,
+  "cachedContents" : {
+    "largest" : "102210.0",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "0.0",
+      "count" : "1784810"
+    }, {
+      "item" : "180.0",
+      "count" : "249513"
+    }, {
+      "item" : "-1.0",
+      "count" : "222385"
+    }, {
+      "item" : "-550.0",
+      "count" : "220961"
+    }, {
+      "item" : "-55.0",
+      "count" : "220446"
+    }, {
+      "item" : "3295.0",
+      "count" : "173687"
+    }, {
+      "item" : "90",
+      "count" : "113881"
+    }, {
+      "item" : "3296",
+      "count" : "100684"
+    }, {
+      "item" : "225",
+      "count" : "97528"
+    }, {
+      "item" : "45",
+      "count" : "84217"
+    }, {
+      "item" : "270.0",
+      "count" : "78535"
+    }, {
+      "item" : "3293.0",
+      "count" : "73467"
+    }, {
+      "item" : "3294.0",
+      "count" : "70976"
+    }, {
+      "item" : "247",
+      "count" : "68019"
+    }, {
+      "item" : "67.0",
+      "count" : "65760"
+    }, {
+      "item" : "1.0",
+      "count" : "59121"
+    }, {
+      "item" : "7.0",
+      "count" : "56191"
+    }, {
+      "item" : "8.0",
+      "count" : "51294"
+    }, {
+      "item" : "13.0",
+      "count" : "50702"
+    }, {
+      "item" : "5",
+      "count" : "49302"
+    } ],
+    "smallest" : "-550.0",
+    "count" : "13299699",
+    "cardinality" : "10497"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "align" : "right",
+    "aggregate" : "average"
+  }
+}, {
+  "id" : 302574362,
+  "name" : "Units",
+  "dataTypeName" : "text",
+  "description" : "The named-units describing the numerical units in \"Measurement Value\".",
+  "fieldName" : "units",
+  "position" : 7,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092057,
+  "width" : 134,
+  "cachedContents" : {
+    "largest" : "universal coordinated time",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "millivolts",
+      "count" : "3203703"
+    }, {
+      "item" : "degrees Celsius",
+      "count" : "1929796"
+    }, {
+      "item" : "pascals",
+      "count" : "1929261"
+    }, {
+      "item" : "meters per second",
+      "count" : "1929064"
+    }, {
+      "item" : "degrees from north",
+      "count" : "996909"
+    }, {
+      "item" : "count",
+      "count" : "996787"
+    }, {
+      "item" : "percent",
+      "count" : "996265"
+    }, {
+      "item" : "Percent Volumetric Water Content",
+      "count" : "725679"
+    }, {
+      "item" : "inches",
+      "count" : "589998"
+    }, {
+      "item" : "universal coordinated time",
+      "count" : "2237"
+    } ],
+    "smallest" : "count",
+    "count" : "13299699",
+    "cardinality" : "10"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574363,
+  "name" : "Units Abbreviation",
+  "dataTypeName" : "text",
+  "description" : "Commonly accepted scientific abbreviation of the \"Units\" column.",
+  "fieldName" : "units_abbreviation",
+  "position" : 8,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092058,
+  "width" : 174,
+  "cachedContents" : {
+    "largest" : "%(vwc)",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "mV",
+      "count" : "3203703"
+    }, {
+      "item" : "degC",
+      "count" : "1929796"
+    }, {
+      "item" : "Pa",
+      "count" : "1929261"
+    }, {
+      "item" : "m/s",
+      "count" : "1929064"
+    }, {
+      "item" : "deg from north",
+      "count" : "996909"
+    }, {
+      "item" : "count",
+      "count" : "996787"
+    }, {
+      "item" : "%",
+      "count" : "996265"
+    }, {
+      "item" : "%(vwc)",
+      "count" : "725679"
+    }, {
+      "item" : "in",
+      "count" : "589998"
+    }, {
+      "item" : "UTC",
+      "count" : "2237"
+    } ],
+    "smallest" : "%",
+    "count" : "13299699",
+    "cardinality" : "10"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574364,
+  "name" : "Measurement Period Type",
+  "dataTypeName" : "text",
+  "description" : "Whether \"Measurement Value\" indicates an instantaneous or cumulative reading.",
+  "fieldName" : "measurement_period_type",
+  "position" : 9,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092059,
+  "width" : 210,
+  "cachedContents" : {
+    "largest" : "Instantaneous",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "Instantaneous",
+      "count" : "11712914"
+    }, {
+      "item" : "Cumulative",
+      "count" : "1586785"
+    } ],
+    "smallest" : "Cumulative",
+    "count" : "13299699",
+    "cardinality" : "2"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574365,
+  "name" : "Data Stream ID",
+  "dataTypeName" : "text",
+  "description" : "An identifier for the measurement type and location.  All records with the same value should be comparable.",
+  "fieldName" : "data_stream_id",
+  "position" : 10,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092060,
+  "width" : 158,
+  "cachedContents" : {
+    "largest" : "40117",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "33305",
+      "count" : "553058"
+    }, {
+      "item" : "33303",
+      "count" : "553057"
+    }, {
+      "item" : "40098",
+      "count" : "529160"
+    }, {
+      "item" : "39197",
+      "count" : "528093"
+    }, {
+      "item" : "39195",
+      "count" : "528082"
+    }, {
+      "item" : "39176",
+      "count" : "520707"
+    }, {
+      "item" : "39174",
+      "count" : "520706"
+    }, {
+      "item" : "39178",
+      "count" : "496464"
+    }, {
+      "item" : "39180",
+      "count" : "496458"
+    }, {
+      "item" : "39182",
+      "count" : "496457"
+    }, {
+      "item" : "39184",
+      "count" : "496452"
+    }, {
+      "item" : "39188",
+      "count" : "496451"
+    }, {
+      "item" : "39186",
+      "count" : "496449"
+    }, {
+      "item" : "40115",
+      "count" : "425691"
+    }, {
+      "item" : "40117",
+      "count" : "425690"
+    }, {
+      "item" : "40113",
+      "count" : "425689"
+    }, {
+      "item" : "40111",
+      "count" : "425688"
+    }, {
+      "item" : "36176",
+      "count" : "342474"
+    }, {
+      "item" : "36178",
+      "count" : "342184"
+    }, {
+      "item" : "36180",
+      "count" : "342091"
+    } ],
+    "smallest" : "33264",
+    "count" : "13299699",
+    "cardinality" : "39"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574366,
+  "name" : "Resource ID",
+  "dataTypeName" : "text",
+  "description" : "An identifier for the resource providing the data.  Within a Data Stream, the specific resource may change over time, even while providing comparable data.",
+  "fieldName" : "resource_id",
+  "position" : 11,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092061,
+  "width" : 139,
+  "cachedContents" : {
+    "largest" : "75340",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "65515",
+      "count" : "553058"
+    }, {
+      "item" : "65513",
+      "count" : "553057"
+    }, {
+      "item" : "75281",
+      "count" : "529160"
+    }, {
+      "item" : "73567",
+      "count" : "528093"
+    }, {
+      "item" : "73565",
+      "count" : "528082"
+    }, {
+      "item" : "73546",
+      "count" : "520707"
+    }, {
+      "item" : "73544",
+      "count" : "520706"
+    }, {
+      "item" : "73548",
+      "count" : "496464"
+    }, {
+      "item" : "73550",
+      "count" : "496458"
+    }, {
+      "item" : "73552",
+      "count" : "496457"
+    }, {
+      "item" : "73554",
+      "count" : "496452"
+    }, {
+      "item" : "73558",
+      "count" : "496451"
+    }, {
+      "item" : "73556",
+      "count" : "496449"
+    }, {
+      "item" : "75335",
+      "count" : "425691"
+    }, {
+      "item" : "75340",
+      "count" : "425690"
+    }, {
+      "item" : "75330",
+      "count" : "425689"
+    }, {
+      "item" : "75325",
+      "count" : "425688"
+    }, {
+      "item" : "69689",
+      "count" : "342474"
+    }, {
+      "item" : "69694",
+      "count" : "342184"
+    }, {
+      "item" : "69699",
+      "count" : "342091"
+    } ],
+    "smallest" : "65142",
+    "count" : "13299699",
+    "cardinality" : "48"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574367,
+  "name" : "Measurement ID",
+  "dataTypeName" : "text",
+  "description" : "A unique identifier for the record, within all records produced by the Data Stream.  The same Measurement ID could exist in two or more Data Streams.",
+  "fieldName" : "measurement_id",
+  "position" : 12,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46675826,
+  "width" : 163,
+  "cachedContents" : {
+    "largest" : "2519131251116237422",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "2519094285229999999",
+      "count" : "24"
+    }, {
+      "item" : "2519075383909999999",
+      "count" : "24"
+    }, {
+      "item" : "2519072785929999999",
+      "count" : "24"
+    }, {
+      "item" : "2518919605399999999",
+      "count" : "24"
+    }, {
+      "item" : "2519067865379999999",
+      "count" : "24"
+    }, {
+      "item" : "2519089522889999999",
+      "count" : "24"
+    }, {
+      "item" : "2518914304909999999",
+      "count" : "24"
+    }, {
+      "item" : "2519087066849999999",
+      "count" : "24"
+    }, {
+      "item" : "2519070109929999999",
+      "count" : "24"
+    }, {
+      "item" : "2518906366739999999",
+      "count" : "24"
+    }, {
+      "item" : "2519101194099999999",
+      "count" : "24"
+    }, {
+      "item" : "2519066874889999999",
+      "count" : "24"
+    }, {
+      "item" : "2519102893249999999",
+      "count" : "24"
+    }, {
+      "item" : "2519102530159999999",
+      "count" : "24"
+    }, {
+      "item" : "2519075391959999999",
+      "count" : "24"
+    }, {
+      "item" : "2519105953569999999",
+      "count" : "24"
+    }, {
+      "item" : "2519083088949999999",
+      "count" : "24"
+    }, {
+      "item" : "2518908252309999999",
+      "count" : "24"
+    }, {
+      "item" : "2519091338029999999",
+      "count" : "24"
+    }, {
+      "item" : "2519078590119999999",
+      "count" : "24"
+    } ],
+    "smallest" : "2518768655999999999",
+    "count" : "13299699",
+    "cardinality" : "2879420"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574368,
+  "name" : "Record ID",
+  "dataTypeName" : "text",
+  "description" : "A unique identifier for each record in the dataset.",
+  "fieldName" : "record_id",
+  "position" : 13,
+  "renderTypeName" : "text",
+  "tableColumnId" : 46092063,
+  "width" : 188,
+  "cachedContents" : {
+    "largest" : "401172519128809649790887",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "332642518769087999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518769519999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518769951999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518770383999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518770815999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518771247999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518771679999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518772111999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518772543999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518772975999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518773407999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518773839999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518774271999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518774703999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518775135999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518775567999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518775999999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518776431999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518776863999999999",
+      "count" : "1"
+    }, {
+      "item" : "332642518777295999999999",
+      "count" : "1"
+    } ],
+    "smallest" : "332642518768655999999999",
+    "count" : "13299699",
+    "cardinality" : "13299699"
+  },
+  "format" : {
+    "displayStyle" : "plain",
+    "align" : "left"
+  }
+}, {
+  "id" : 302574369,
+  "name" : "Latitude",
+  "dataTypeName" : "number",
+  "description" : "Latitude of the sensor providing the measurement in WGS84 coordinates",
+  "fieldName" : "latitude",
+  "position" : 14,
+  "renderTypeName" : "number",
+  "tableColumnId" : 46092064,
+  "width" : 133,
+  "cachedContents" : {
+    "largest" : "41.973086",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "41.973086",
+      "count" : "5919421"
+    }, {
+      "item" : "41.90715",
+      "count" : "4165822"
+    }, {
+      "item" : "41.753112",
+      "count" : "3214456"
+    } ],
+    "smallest" : "41.753112",
+    "count" : "13299699",
+    "cardinality" : "3"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "align" : "right"
+  }
+}, {
+  "id" : 302574370,
+  "name" : "Longitude",
+  "dataTypeName" : "number",
+  "description" : "Longitude of the sensor providing the measurement in WGS84 coordinates",
+  "fieldName" : "longitude",
+  "position" : 15,
+  "renderTypeName" : "number",
+  "tableColumnId" : 46092065,
+  "width" : 162,
+  "cachedContents" : {
+    "largest" : "-87.607731",
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : "-87.659725",
+      "count" : "5919421"
+    }, {
+      "item" : "-87.653996",
+      "count" : "4165822"
+    }, {
+      "item" : "-87.607731",
+      "count" : "3214456"
+    } ],
+    "smallest" : "-87.659725",
+    "count" : "13299699",
+    "cardinality" : "3"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "align" : "right"
+  }
+}, {
+  "id" : 302574371,
+  "name" : "Location",
+  "dataTypeName" : "point",
+  "description" : "Latitude and Longitude of the sensor providing the measurement in WGS84 coordinates.",
+  "fieldName" : "location",
+  "position" : 16,
+  "renderTypeName" : "point",
+  "tableColumnId" : 46092067,
+  "width" : 187,
+  "cachedContents" : {
+    "non_null" : "13299699",
+    "null" : "0",
+    "top" : [ {
+      "item" : {
+        "coordinates" : [ -87.659725, 41.973086 ],
+        "type" : "Point"
+      },
+      "count" : "5919421"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.653996, 41.90715 ],
+        "type" : "Point"
+      },
+      "count" : "4165822"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.607731, 41.753112 ],
+        "type" : "Point"
+      },
+      "count" : "3214456"
+    } ],
+    "count" : "13299699",
+    "cardinality" : "3"
+  },
+  "format" : {
+    "align" : "left"
+  }
+} ]

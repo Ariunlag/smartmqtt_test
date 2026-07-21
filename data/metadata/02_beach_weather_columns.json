@@ -1,0 +1,1455 @@
+[ {
+  "id" : 206552927,
+  "name" : "Station Name",
+  "dataTypeName" : "text",
+  "fieldName" : "station_name",
+  "position" : 1,
+  "renderTypeName" : "text",
+  "tableColumnId" : 28406164,
+  "width" : 220,
+  "cachedContents" : {
+    "largest" : "Oak Street Weather Station",
+    "non_null" : "133992",
+    "null" : "0",
+    "top" : [ {
+      "item" : "63rd Street Weather Station",
+      "count" : "47309"
+    }, {
+      "item" : "Foster Weather Station",
+      "count" : "45586"
+    }, {
+      "item" : "Oak Street Weather Station",
+      "count" : "41097"
+    } ],
+    "smallest" : "63rd Street Weather Station",
+    "not_null" : "97254",
+    "count" : "133992",
+    "cardinality" : "3"
+  },
+  "format" : {
+    "align" : "left",
+    "aggregate" : "count"
+  }
+}, {
+  "id" : 206552928,
+  "name" : "Measurement Timestamp",
+  "dataTypeName" : "calendar_date",
+  "description" : "The date and time when the measurements were taken.",
+  "fieldName" : "measurement_timestamp",
+  "position" : 2,
+  "renderTypeName" : "calendar_date",
+  "tableColumnId" : 28406165,
+  "width" : 226,
+  "cachedContents" : {
+    "largest" : "2022-04-27T09:00:00.000",
+    "non_null" : "133989",
+    "null" : "0",
+    "top" : [ {
+      "item" : "2019-08-04T00:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2019-09-04T23:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2015-12-12T17:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2021-07-01T05:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2015-10-08T04:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2015-07-19T09:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2021-06-20T12:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2016-05-03T01:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2017-01-12T10:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2017-11-11T14:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2017-07-31T21:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2021-07-01T19:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2022-03-15T21:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2017-08-03T01:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2015-12-17T00:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2015-12-27T19:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2016-07-25T10:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2018-06-07T07:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2015-09-16T04:00:00.000",
+      "count" : "3"
+    }, {
+      "item" : "2020-09-29T10:00:00.000",
+      "count" : "3"
+    } ],
+    "smallest" : "2015-04-25T09:00:00.000",
+    "not_null" : "97254",
+    "count" : "133989",
+    "cardinality" : "50829"
+  },
+  "format" : {
+    "view" : "date_time",
+    "align" : "left"
+  }
+}, {
+  "id" : 206552929,
+  "name" : "Air Temperature",
+  "dataTypeName" : "number",
+  "description" : "Air Temperature in Celsius degrees.",
+  "fieldName" : "air_temperature",
+  "position" : 3,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28406169,
+  "width" : 169,
+  "cachedContents" : {
+    "largest" : "36.5",
+    "non_null" : "133914",
+    "average" : "11.63804098719298",
+    "null" : "75",
+    "top" : [ {
+      "item" : "22",
+      "count" : "666"
+    }, {
+      "item" : "22.5",
+      "count" : "655"
+    }, {
+      "item" : "21.5",
+      "count" : "633"
+    }, {
+      "item" : "21",
+      "count" : "606"
+    }, {
+      "item" : "23",
+      "count" : "596"
+    }, {
+      "item" : "23.5",
+      "count" : "590"
+    }, {
+      "item" : "3.5",
+      "count" : "582"
+    }, {
+      "item" : "20",
+      "count" : "581"
+    }, {
+      "item" : "20.5",
+      "count" : "574"
+    }, {
+      "item" : "24",
+      "count" : "550"
+    }, {
+      "item" : "21.8",
+      "count" : "548"
+    }, {
+      "item" : "19.5",
+      "count" : "525"
+    }, {
+      "item" : "24.5",
+      "count" : "522"
+    }, {
+      "item" : "19",
+      "count" : "501"
+    }, {
+      "item" : "23.7",
+      "count" : "480"
+    }, {
+      "item" : "22.7",
+      "count" : "469"
+    }, {
+      "item" : "6.5",
+      "count" : "463"
+    }, {
+      "item" : "4",
+      "count" : "458"
+    }, {
+      "item" : "22.2",
+      "count" : "457"
+    }, {
+      "item" : "23.3",
+      "count" : "451"
+    } ],
+    "smallest" : "-29.78",
+    "not_null" : "97179",
+    "count" : "133989",
+    "sum" : "984147.66",
+    "cardinality" : "1091"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "true",
+    "precision" : "2",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552930,
+  "name" : "Wet Bulb Temperature",
+  "dataTypeName" : "number",
+  "description" : "Wet bulb temperature in Celsius degrees.",
+  "fieldName" : "wet_bulb_temperature",
+  "position" : 4,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28463941,
+  "width" : 203,
+  "cachedContents" : {
+    "largest" : "28.4",
+    "non_null" : "88406",
+    "average" : "9.333482317447902",
+    "null" : "45586",
+    "top" : [ {
+      "item" : "19.9",
+      "count" : "471"
+    }, {
+      "item" : "20.6",
+      "count" : "470"
+    }, {
+      "item" : "17.3",
+      "count" : "462"
+    }, {
+      "item" : "16.9",
+      "count" : "457"
+    }, {
+      "item" : "18.9",
+      "count" : "457"
+    }, {
+      "item" : "19.5",
+      "count" : "456"
+    }, {
+      "item" : "19.6",
+      "count" : "452"
+    }, {
+      "item" : "20.8",
+      "count" : "452"
+    }, {
+      "item" : "20.9",
+      "count" : "452"
+    }, {
+      "item" : "20.1",
+      "count" : "451"
+    }, {
+      "item" : "19.7",
+      "count" : "447"
+    }, {
+      "item" : "20.5",
+      "count" : "444"
+    }, {
+      "item" : "17.7",
+      "count" : "443"
+    }, {
+      "item" : "18.2",
+      "count" : "442"
+    }, {
+      "item" : "19",
+      "count" : "439"
+    }, {
+      "item" : "20.2",
+      "count" : "438"
+    }, {
+      "item" : "20.3",
+      "count" : "438"
+    }, {
+      "item" : "20.7",
+      "count" : "437"
+    }, {
+      "item" : "19.1",
+      "count" : "437"
+    }, {
+      "item" : "17.2",
+      "count" : "435"
+    } ],
+    "smallest" : "-28.9",
+    "not_null" : "61480",
+    "count" : "133992",
+    "sum" : "501180.0",
+    "cardinality" : "525"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "1",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552931,
+  "name" : "Humidity",
+  "dataTypeName" : "number",
+  "description" : "Percent relative humidity.",
+  "fieldName" : "humidity",
+  "position" : 5,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28406168,
+  "width" : 182,
+  "cachedContents" : {
+    "largest" : "100",
+    "non_null" : "133992",
+    "average" : "69.46234551856140",
+    "null" : "0",
+    "top" : [ {
+      "item" : "77",
+      "count" : "3071"
+    }, {
+      "item" : "74",
+      "count" : "3063"
+    }, {
+      "item" : "73",
+      "count" : "3051"
+    }, {
+      "item" : "71",
+      "count" : "3044"
+    }, {
+      "item" : "78",
+      "count" : "3043"
+    }, {
+      "item" : "69",
+      "count" : "3035"
+    }, {
+      "item" : "70",
+      "count" : "3034"
+    }, {
+      "item" : "72",
+      "count" : "3023"
+    }, {
+      "item" : "68",
+      "count" : "3010"
+    }, {
+      "item" : "65",
+      "count" : "2987"
+    }, {
+      "item" : "75",
+      "count" : "2978"
+    }, {
+      "item" : "79",
+      "count" : "2969"
+    }, {
+      "item" : "76",
+      "count" : "2960"
+    }, {
+      "item" : "80",
+      "count" : "2955"
+    }, {
+      "item" : "66",
+      "count" : "2938"
+    }, {
+      "item" : "67",
+      "count" : "2933"
+    }, {
+      "item" : "81",
+      "count" : "2927"
+    }, {
+      "item" : "64",
+      "count" : "2867"
+    }, {
+      "item" : "82",
+      "count" : "2866"
+    }, {
+      "item" : "63",
+      "count" : "2816"
+    } ],
+    "smallest" : "6",
+    "not_null" : "97254",
+    "count" : "133992",
+    "sum" : "5879154.0",
+    "cardinality" : "88"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "0",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552932,
+  "name" : "Rain Intensity",
+  "dataTypeName" : "number",
+  "description" : "Rain intensity in mm per hour.",
+  "fieldName" : "rain_intensity",
+  "position" : 6,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28463971,
+  "width" : 160,
+  "cachedContents" : {
+    "largest" : "183.6",
+    "non_null" : "88406",
+    "average" : "0.1824161498780193",
+    "null" : "45586",
+    "top" : [ {
+      "item" : "0",
+      "count" : "85184"
+    }, {
+      "item" : "0.6",
+      "count" : "994"
+    }, {
+      "item" : "1.2",
+      "count" : "404"
+    }, {
+      "item" : "1.8",
+      "count" : "283"
+    }, {
+      "item" : "2.4",
+      "count" : "219"
+    }, {
+      "item" : "3",
+      "count" : "190"
+    }, {
+      "item" : "3.6",
+      "count" : "144"
+    }, {
+      "item" : "4.2",
+      "count" : "113"
+    }, {
+      "item" : "4.8",
+      "count" : "83"
+    }, {
+      "item" : "5.4",
+      "count" : "72"
+    }, {
+      "item" : "8.4",
+      "count" : "64"
+    }, {
+      "item" : "7.2",
+      "count" : "52"
+    }, {
+      "item" : "6",
+      "count" : "50"
+    }, {
+      "item" : "6.6",
+      "count" : "46"
+    }, {
+      "item" : "7.8",
+      "count" : "38"
+    }, {
+      "item" : "9",
+      "count" : "33"
+    }, {
+      "item" : "9.6",
+      "count" : "30"
+    }, {
+      "item" : "10.8",
+      "count" : "27"
+    }, {
+      "item" : "10.2",
+      "count" : "26"
+    }, {
+      "item" : "11.4",
+      "count" : "23"
+    } ],
+    "smallest" : "0",
+    "not_null" : "61480",
+    "count" : "133992",
+    "sum" : "9795.2",
+    "cardinality" : "91"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "1",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552933,
+  "name" : "Interval Rain",
+  "dataTypeName" : "number",
+  "description" : "Rain since the last hourly measurement, in mm.",
+  "fieldName" : "interval_rain",
+  "position" : 7,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28464131,
+  "width" : 148,
+  "cachedContents" : {
+    "largest" : "63.42",
+    "non_null" : "133989",
+    "average" : "0.1636946761501926",
+    "null" : "0",
+    "top" : [ {
+      "item" : "0",
+      "count" : "123107"
+    }, {
+      "item" : "0.1",
+      "count" : "1431"
+    }, {
+      "item" : "0.03",
+      "count" : "797"
+    }, {
+      "item" : "0.2",
+      "count" : "684"
+    }, {
+      "item" : "0.3",
+      "count" : "562"
+    }, {
+      "item" : "0.05",
+      "count" : "372"
+    }, {
+      "item" : "0.4",
+      "count" : "338"
+    }, {
+      "item" : "0.5",
+      "count" : "310"
+    }, {
+      "item" : "0.6",
+      "count" : "249"
+    }, {
+      "item" : "0.7",
+      "count" : "206"
+    }, {
+      "item" : "0.08",
+      "count" : "201"
+    }, {
+      "item" : "0.8",
+      "count" : "184"
+    }, {
+      "item" : "0.9",
+      "count" : "167"
+    }, {
+      "item" : "1",
+      "count" : "140"
+    }, {
+      "item" : "1.1",
+      "count" : "138"
+    }, {
+      "item" : "1.2",
+      "count" : "136"
+    }, {
+      "item" : "1.5",
+      "count" : "125"
+    }, {
+      "item" : "1.3",
+      "count" : "121"
+    }, {
+      "item" : "1.6",
+      "count" : "118"
+    }, {
+      "item" : "1.7",
+      "count" : "108"
+    } ],
+    "smallest" : "-0.9",
+    "not_null" : "97254",
+    "count" : "133989",
+    "sum" : "13854.79",
+    "cardinality" : "620"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "2",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552934,
+  "name" : "Total Rain",
+  "dataTypeName" : "number",
+  "description" : "Total rain since midnight in mm.",
+  "fieldName" : "total_rain",
+  "position" : 8,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28464053,
+  "width" : 142,
+  "cachedContents" : {
+    "largest" : "1056.1",
+    "non_null" : "88406",
+    "average" : "161.8199526975436",
+    "null" : "45586",
+    "top" : [ {
+      "item" : "0",
+      "count" : "1073"
+    }, {
+      "item" : "1.4",
+      "count" : "690"
+    }, {
+      "item" : "13",
+      "count" : "657"
+    }, {
+      "item" : "0.8",
+      "count" : "651"
+    }, {
+      "item" : "3.2",
+      "count" : "473"
+    }, {
+      "item" : "28.8",
+      "count" : "418"
+    }, {
+      "item" : "2.8",
+      "count" : "367"
+    }, {
+      "item" : "865.9",
+      "count" : "362"
+    }, {
+      "item" : "11.9",
+      "count" : "361"
+    }, {
+      "item" : "3.5",
+      "count" : "358"
+    }, {
+      "item" : "256.2",
+      "count" : "358"
+    }, {
+      "item" : "1.7",
+      "count" : "356"
+    }, {
+      "item" : "5.5",
+      "count" : "354"
+    }, {
+      "item" : "0.2",
+      "count" : "354"
+    }, {
+      "item" : "5.4",
+      "count" : "351"
+    }, {
+      "item" : "6",
+      "count" : "350"
+    }, {
+      "item" : "26",
+      "count" : "349"
+    }, {
+      "item" : "11.8",
+      "count" : "348"
+    }, {
+      "item" : "0.9",
+      "count" : "341"
+    }, {
+      "item" : "6.6",
+      "count" : "332"
+    } ],
+    "smallest" : "0",
+    "not_null" : "61480",
+    "count" : "133992",
+    "sum" : "8689246.0",
+    "cardinality" : "3178"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "1",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552935,
+  "name" : "Precipitation Type",
+  "dataTypeName" : "number",
+  "description" : "0   = No precipitation \n60 = Liquid precipitation, e.g. rain \n     - Ice, hail and sleet are transmitted as rain (60).\n70 = Solid precipitation, e.g. snow \n40 = unspecified precipitation",
+  "fieldName" : "precipitation_type",
+  "position" : 9,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28463942,
+  "width" : 179,
+  "cachedContents" : {
+    "largest" : "70",
+    "non_null" : "88406",
+    "average" : "4.725310538763804",
+    "null" : "45586",
+    "top" : [ {
+      "item" : "0",
+      "count" : "81997"
+    }, {
+      "item" : "60",
+      "count" : "5730"
+    }, {
+      "item" : "70",
+      "count" : "678"
+    }, {
+      "item" : "5",
+      "count" : "1"
+    } ],
+    "smallest" : "0",
+    "not_null" : "61480",
+    "count" : "133992",
+    "sum" : "253735.0",
+    "cardinality" : "4"
+  },
+  "format" : { }
+}, {
+  "id" : 206552936,
+  "name" : "Wind Direction",
+  "dataTypeName" : "number",
+  "description" : "Wind direction in degrees.",
+  "fieldName" : "wind_direction",
+  "position" : 10,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28406167,
+  "width" : 163,
+  "cachedContents" : {
+    "largest" : "359",
+    "non_null" : "133992",
+    "average" : "181.4982041163544",
+    "null" : "0",
+    "top" : [ {
+      "item" : "0",
+      "count" : "10887"
+    }, {
+      "item" : "271",
+      "count" : "687"
+    }, {
+      "item" : "272",
+      "count" : "681"
+    }, {
+      "item" : "269",
+      "count" : "644"
+    }, {
+      "item" : "266",
+      "count" : "637"
+    }, {
+      "item" : "268",
+      "count" : "631"
+    }, {
+      "item" : "276",
+      "count" : "629"
+    }, {
+      "item" : "15",
+      "count" : "620"
+    }, {
+      "item" : "270",
+      "count" : "617"
+    }, {
+      "item" : "11",
+      "count" : "613"
+    }, {
+      "item" : "12",
+      "count" : "609"
+    }, {
+      "item" : "259",
+      "count" : "608"
+    }, {
+      "item" : "267",
+      "count" : "605"
+    }, {
+      "item" : "265",
+      "count" : "605"
+    }, {
+      "item" : "273",
+      "count" : "603"
+    }, {
+      "item" : "13",
+      "count" : "598"
+    }, {
+      "item" : "274",
+      "count" : "595"
+    }, {
+      "item" : "255",
+      "count" : "591"
+    }, {
+      "item" : "7",
+      "count" : "581"
+    }, {
+      "item" : "264",
+      "count" : "581"
+    } ],
+    "smallest" : "0",
+    "not_null" : "97254",
+    "count" : "133992",
+    "sum" : "15361645.0",
+    "cardinality" : "360"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552937,
+  "name" : "Wind Speed",
+  "dataTypeName" : "number",
+  "description" : "Wind speed in meters per second at the time the record was reported.",
+  "fieldName" : "wind_speed",
+  "position" : 11,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28406170,
+  "width" : 157,
+  "cachedContents" : {
+    "largest" : "999.9",
+    "non_null" : "133992",
+    "average" : "3.066782060067582",
+    "null" : "0",
+    "top" : [ {
+      "item" : "3.3",
+      "count" : "10272"
+    }, {
+      "item" : "1.3",
+      "count" : "3464"
+    }, {
+      "item" : "1.7",
+      "count" : "3347"
+    }, {
+      "item" : "2.1",
+      "count" : "3270"
+    }, {
+      "item" : "1.2",
+      "count" : "3161"
+    }, {
+      "item" : "1.4",
+      "count" : "3156"
+    }, {
+      "item" : "1.1",
+      "count" : "3106"
+    }, {
+      "item" : "1.6",
+      "count" : "3098"
+    }, {
+      "item" : "1.5",
+      "count" : "3078"
+    }, {
+      "item" : "1",
+      "count" : "3035"
+    }, {
+      "item" : "2.5",
+      "count" : "2999"
+    }, {
+      "item" : "2",
+      "count" : "2991"
+    }, {
+      "item" : "1.9",
+      "count" : "2949"
+    }, {
+      "item" : "1.8",
+      "count" : "2944"
+    }, {
+      "item" : "0.8",
+      "count" : "2868"
+    }, {
+      "item" : "0.9",
+      "count" : "2783"
+    }, {
+      "item" : "2.3",
+      "count" : "2737"
+    }, {
+      "item" : "2.2",
+      "count" : "2736"
+    }, {
+      "item" : "2.4",
+      "count" : "2625"
+    }, {
+      "item" : "2.6",
+      "count" : "2615"
+    } ],
+    "smallest" : "0",
+    "not_null" : "97254",
+    "count" : "133992",
+    "sum" : "259566.3",
+    "cardinality" : "163"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "1",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552938,
+  "name" : "Maximum Wind Speed",
+  "dataTypeName" : "number",
+  "description" : "Maximum wind speed in the two-minute period immediately preceding the time the record was reported.",
+  "fieldName" : "maximum_wind_speed",
+  "position" : 12,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28409077,
+  "width" : 201,
+  "cachedContents" : {
+    "largest" : "999.9",
+    "non_null" : "133992",
+    "average" : "4.557048843309152",
+    "null" : "0",
+    "top" : [ {
+      "item" : "0",
+      "count" : "8489"
+    }, {
+      "item" : "2.5",
+      "count" : "2613"
+    }, {
+      "item" : "2.1",
+      "count" : "2471"
+    }, {
+      "item" : "3",
+      "count" : "2391"
+    }, {
+      "item" : "3.4",
+      "count" : "2321"
+    }, {
+      "item" : "2.3",
+      "count" : "2184"
+    }, {
+      "item" : "2.7",
+      "count" : "2174"
+    }, {
+      "item" : "3.8",
+      "count" : "2150"
+    }, {
+      "item" : "2.6",
+      "count" : "2111"
+    }, {
+      "item" : "2.4",
+      "count" : "2090"
+    }, {
+      "item" : "2.9",
+      "count" : "2083"
+    }, {
+      "item" : "3.2",
+      "count" : "2069"
+    }, {
+      "item" : "3.5",
+      "count" : "2061"
+    }, {
+      "item" : "2.8",
+      "count" : "2049"
+    }, {
+      "item" : "1.7",
+      "count" : "2044"
+    }, {
+      "item" : "2.2",
+      "count" : "2028"
+    }, {
+      "item" : "3.1",
+      "count" : "2028"
+    }, {
+      "item" : "3.3",
+      "count" : "2020"
+    }, {
+      "item" : "4.2",
+      "count" : "2015"
+    }, {
+      "item" : "2",
+      "count" : "1977"
+    } ],
+    "smallest" : "0",
+    "not_null" : "97254",
+    "count" : "133992",
+    "sum" : "385699.5",
+    "cardinality" : "222"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "1",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552939,
+  "name" : "Barometric Pressure",
+  "dataTypeName" : "number",
+  "description" : "Barometric pressure in hPa.",
+  "fieldName" : "barometric_pressure",
+  "position" : 13,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28463940,
+  "width" : 190,
+  "cachedContents" : {
+    "largest" : "3098.5",
+    "non_null" : "133846",
+    "average" : "994.2504828859537",
+    "null" : "146",
+    "top" : [ {
+      "item" : "994.6",
+      "count" : "1778"
+    }, {
+      "item" : "992.9",
+      "count" : "1773"
+    }, {
+      "item" : "993.6",
+      "count" : "1767"
+    }, {
+      "item" : "991.9",
+      "count" : "1665"
+    }, {
+      "item" : "995.6",
+      "count" : "1645"
+    }, {
+      "item" : "991.2",
+      "count" : "1613"
+    }, {
+      "item" : "996.3",
+      "count" : "1569"
+    }, {
+      "item" : "993.9",
+      "count" : "1522"
+    }, {
+      "item" : "994.2",
+      "count" : "1493"
+    }, {
+      "item" : "997.3",
+      "count" : "1457"
+    }, {
+      "item" : "993.2",
+      "count" : "1453"
+    }, {
+      "item" : "994.9",
+      "count" : "1431"
+    }, {
+      "item" : "992.6",
+      "count" : "1421"
+    }, {
+      "item" : "995.3",
+      "count" : "1414"
+    }, {
+      "item" : "992.2",
+      "count" : "1358"
+    }, {
+      "item" : "991.5",
+      "count" : "1313"
+    }, {
+      "item" : "998",
+      "count" : "1305"
+    }, {
+      "item" : "995.9",
+      "count" : "1301"
+    }, {
+      "item" : "996.6",
+      "count" : "1279"
+    }, {
+      "item" : "990.2",
+      "count" : "1269"
+    } ],
+    "smallest" : "963.8",
+    "not_null" : "97108",
+    "count" : "133992",
+    "sum" : "84006211.8",
+    "cardinality" : "557"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "true",
+    "precision" : "1",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552940,
+  "name" : "Solar Radiation",
+  "dataTypeName" : "number",
+  "description" : "Solar radiation in watts per square meter.",
+  "fieldName" : "solar_radiation",
+  "position" : 14,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28406166,
+  "width" : 189,
+  "cachedContents" : {
+    "largest" : "1277",
+    "non_null" : "133992",
+    "average" : "96.09293697866207",
+    "null" : "0",
+    "top" : [ {
+      "item" : "0",
+      "count" : "41756"
+    }, {
+      "item" : "2",
+      "count" : "7833"
+    }, {
+      "item" : "1",
+      "count" : "7805"
+    }, {
+      "item" : "3",
+      "count" : "6451"
+    }, {
+      "item" : "4",
+      "count" : "6360"
+    }, {
+      "item" : "5",
+      "count" : "2766"
+    }, {
+      "item" : "-3",
+      "count" : "2687"
+    }, {
+      "item" : "-2",
+      "count" : "1954"
+    }, {
+      "item" : "-4",
+      "count" : "1818"
+    }, {
+      "item" : "6",
+      "count" : "1144"
+    }, {
+      "item" : "7",
+      "count" : "738"
+    }, {
+      "item" : "-5",
+      "count" : "577"
+    }, {
+      "item" : "8",
+      "count" : "450"
+    }, {
+      "item" : "10",
+      "count" : "378"
+    }, {
+      "item" : "12",
+      "count" : "346"
+    }, {
+      "item" : "9",
+      "count" : "345"
+    }, {
+      "item" : "11",
+      "count" : "341"
+    }, {
+      "item" : "15",
+      "count" : "329"
+    }, {
+      "item" : "13",
+      "count" : "329"
+    }, {
+      "item" : "24",
+      "count" : "320"
+    } ],
+    "smallest" : "-100000",
+    "not_null" : "97254",
+    "count" : "133992",
+    "sum" : "8133114.0",
+    "cardinality" : "1061"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552941,
+  "name" : "Heading",
+  "dataTypeName" : "number",
+  "description" : "The current heading of the wind-measurement unit.  The ideal value to get the most accurate measurements is true north (0 degrees) and the unit is manually adjusted, as necessary, to keep it close to this heading",
+  "fieldName" : "heading",
+  "position" : 15,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28464156,
+  "width" : 131,
+  "cachedContents" : {
+    "largest" : "359",
+    "non_null" : "88406",
+    "average" : "196.2236624019964",
+    "null" : "45586",
+    "top" : [ {
+      "item" : "354",
+      "count" : "14089"
+    }, {
+      "item" : "355",
+      "count" : "11633"
+    }, {
+      "item" : "357",
+      "count" : "10101"
+    }, {
+      "item" : "0",
+      "count" : "8753"
+    }, {
+      "item" : "1",
+      "count" : "7463"
+    }, {
+      "item" : "351",
+      "count" : "7317"
+    }, {
+      "item" : "2",
+      "count" : "5791"
+    }, {
+      "item" : "356",
+      "count" : "4625"
+    }, {
+      "item" : "350",
+      "count" : "4343"
+    }, {
+      "item" : "358",
+      "count" : "3432"
+    }, {
+      "item" : "353",
+      "count" : "3426"
+    }, {
+      "item" : "3",
+      "count" : "2610"
+    }, {
+      "item" : "320",
+      "count" : "2124"
+    }, {
+      "item" : "352",
+      "count" : "1102"
+    }, {
+      "item" : "359",
+      "count" : "949"
+    }, {
+      "item" : "322",
+      "count" : "292"
+    }, {
+      "item" : "349",
+      "count" : "222"
+    }, {
+      "item" : "321",
+      "count" : "70"
+    }, {
+      "item" : "4",
+      "count" : "47"
+    }, {
+      "item" : "348",
+      "count" : "7"
+    } ],
+    "smallest" : "0",
+    "not_null" : "61480",
+    "count" : "133992",
+    "sum" : "10536622.0",
+    "cardinality" : "24"
+  },
+  "format" : { }
+}, {
+  "id" : 206552942,
+  "name" : "Battery Life",
+  "dataTypeName" : "number",
+  "description" : "Battery voltage, an indicator of remaining battery life used by the Chicago Park District to know when batteries should be replaced.",
+  "fieldName" : "battery_life",
+  "position" : 16,
+  "renderTypeName" : "number",
+  "tableColumnId" : 28406171,
+  "width" : 145,
+  "cachedContents" : {
+    "largest" : "15.3",
+    "non_null" : "133992",
+    "average" : "13.11382475956426",
+    "null" : "0",
+    "top" : [ {
+      "item" : "11.9",
+      "count" : "34833"
+    }, {
+      "item" : "15.1",
+      "count" : "27092"
+    }, {
+      "item" : "12",
+      "count" : "24381"
+    }, {
+      "item" : "12.1",
+      "count" : "14105"
+    }, {
+      "item" : "15.2",
+      "count" : "13034"
+    }, {
+      "item" : "11.8",
+      "count" : "12561"
+    }, {
+      "item" : "14.8",
+      "count" : "3593"
+    }, {
+      "item" : "11.7",
+      "count" : "1488"
+    }, {
+      "item" : "12.2",
+      "count" : "925"
+    }, {
+      "item" : "14.9",
+      "count" : "717"
+    }, {
+      "item" : "14.7",
+      "count" : "619"
+    }, {
+      "item" : "15",
+      "count" : "340"
+    }, {
+      "item" : "14.6",
+      "count" : "106"
+    }, {
+      "item" : "11.6",
+      "count" : "87"
+    }, {
+      "item" : "15.3",
+      "count" : "47"
+    }, {
+      "item" : "11.5",
+      "count" : "17"
+    }, {
+      "item" : "14.5",
+      "count" : "14"
+    }, {
+      "item" : "13.4",
+      "count" : "10"
+    }, {
+      "item" : "11.4",
+      "count" : "7"
+    }, {
+      "item" : "13.3",
+      "count" : "6"
+    } ],
+    "smallest" : "11.2",
+    "not_null" : "97254",
+    "count" : "133992",
+    "sum" : "1109927.9",
+    "cardinality" : "26"
+  },
+  "format" : {
+    "precisionStyle" : "standard",
+    "noCommas" : "false",
+    "precision" : "1",
+    "align" : "right"
+  }
+}, {
+  "id" : 206552943,
+  "name" : "Measurement Timestamp Label",
+  "dataTypeName" : "text",
+  "description" : "The Last Updated value in text format, suitable for use in the Visualize function.",
+  "fieldName" : "measurement_timestamp_label",
+  "position" : 17,
+  "renderTypeName" : "text",
+  "tableColumnId" : 28406172,
+  "width" : 251,
+  "cachedContents" : {
+    "largest" : "12/31/2021 9:00 PM",
+    "non_null" : "133992",
+    "null" : "0",
+    "top" : [ {
+      "item" : "12/03/2017 7:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "09/04/2019 1:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "12/14/2015 9:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "10/12/2021 8:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "11/18/2017 3:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "06/26/2021 5:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "05/25/2016 8:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "04/09/2018 11:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "09/18/2021 3:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "03/09/2017 6:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "10/05/2016 7:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "11/09/2021 10:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "03/24/2022 8:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "03/21/2017 7:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "05/25/2018 5:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "08/11/2019 7:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "11/16/2021 10:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "07/25/2016 5:00 AM",
+      "count" : "3"
+    }, {
+      "item" : "12/18/2016 5:00 PM",
+      "count" : "3"
+    }, {
+      "item" : "12/04/2021 7:00 AM",
+      "count" : "3"
+    } ],
+    "smallest" : "01/01/2016 10:00 AM",
+    "not_null" : "97254",
+    "count" : "133992",
+    "cardinality" : "50830"
+  },
+  "format" : {
+    "align" : "left"
+  }
+}, {
+  "id" : 206552944,
+  "name" : "Measurement ID",
+  "dataTypeName" : "text",
+  "description" : "A unique record ID made up of the Station Name and Measurement Timestamp.",
+  "fieldName" : "measurement_id",
+  "position" : 18,
+  "renderTypeName" : "text",
+  "tableColumnId" : 28406173,
+  "width" : 267,
+  "cachedContents" : {
+    "largest" : "OakStreetWeatherStation202204272400",
+    "non_null" : "133992",
+    "null" : "0",
+    "top" : [ {
+      "item" : "OakStreetWeatherStation201711211600",
+      "count" : "1"
+    }, {
+      "item" : "FosterWeatherStation201506072300",
+      "count" : "1"
+    }, {
+      "item" : "63rdStreetWeatherStation201907121600",
+      "count" : "1"
+    }, {
+      "item" : "FosterWeatherStation202106231800",
+      "count" : "1"
+    }, {
+      "item" : "FosterWeatherStation201511271600",
+      "count" : "1"
+    }, {
+      "item" : "63rdStreetWeatherStation201512280900",
+      "count" : "1"
+    }, {
+      "item" : "FosterWeatherStation201806151200",
+      "count" : "1"
+    }, {
+      "item" : "63rdStreetWeatherStation201702220100",
+      "count" : "1"
+    }, {
+      "item" : "OakStreetWeatherStation201806181600",
+      "count" : "1"
+    }, {
+      "item" : "FosterWeatherStation201901220300",
+      "count" : "1"
+    }, {
+      "item" : "63rdStreetWeatherStation201508211100",
+      "count" : "1"
+    }, {
+      "item" : "OakStreetWeatherStation201805102000",
+      "count" : "1"
+    }, {
+      "item" : "63rdStreetWeatherStation202005240300",
+      "count" : "1"
+    }, {
+      "item" : "FosterWeatherStation201602120900",
+      "count" : "1"
+    }, {
+      "item" : "OakStreetWeatherStation201508292300",
+      "count" : "1"
+    }, {
+      "item" : "FosterWeatherStation201612030400",
+      "count" : "1"
+    }, {
+      "item" : "OakStreetWeatherStation201710100100",
+      "count" : "1"
+    }, {
+      "item" : "OakStreetWeatherStation201511160500",
+      "count" : "1"
+    }, {
+      "item" : "63rdStreetWeatherStation201805112300",
+      "count" : "1"
+    }, {
+      "item" : "63rdStreetWeatherStation202005270900",
+      "count" : "1"
+    } ],
+    "smallest" : "63rdStreetWeatherStation201504250900",
+    "not_null" : "97254",
+    "count" : "133992",
+    "cardinality" : "133992"
+  },
+  "format" : {
+    "align" : "left"
+  }
+} ]

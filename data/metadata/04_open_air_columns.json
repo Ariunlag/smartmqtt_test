@@ -1,0 +1,2571 @@
+[ {
+  "id" : 625257796,
+  "name" : "datasourceid",
+  "dataTypeName" : "text",
+  "description" : "Sensor identification number",
+  "fieldName" : "datasourceid",
+  "position" : 1,
+  "renderTypeName" : "text",
+  "tableColumnId" : 164724999,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "DZUWB2477",
+    "null" : "0",
+    "top" : [ {
+      "item" : "DRQFY3540",
+      "count" : "99259"
+    }, {
+      "item" : "DFIBC1899",
+      "count" : "96357"
+    }, {
+      "item" : "DSSQU9498",
+      "count" : "84247"
+    }, {
+      "item" : "DXHCB5919",
+      "count" : "75792"
+    }, {
+      "item" : "DQVGW1846",
+      "count" : "38112"
+    }, {
+      "item" : "DSMXS8409",
+      "count" : "38091"
+    }, {
+      "item" : "DCHTB8281",
+      "count" : "38075"
+    }, {
+      "item" : "DMAFX5938",
+      "count" : "38070"
+    }, {
+      "item" : "DEJMD2536",
+      "count" : "38064"
+    }, {
+      "item" : "DVWMK9661",
+      "count" : "38040"
+    }, {
+      "item" : "DGTGR9009",
+      "count" : "38039"
+    }, {
+      "item" : "DKUAZ4434",
+      "count" : "38037"
+    }, {
+      "item" : "DMARJ5120",
+      "count" : "38021"
+    }, {
+      "item" : "DACZY2913",
+      "count" : "38016"
+    }, {
+      "item" : "DGRCH4426",
+      "count" : "37995"
+    }, {
+      "item" : "DQAJZ3770",
+      "count" : "37990"
+    }, {
+      "item" : "DRHPF2920",
+      "count" : "37960"
+    }, {
+      "item" : "DBMHJ0743",
+      "count" : "37956"
+    }, {
+      "item" : "DGGGM0466",
+      "count" : "37951"
+    }, {
+      "item" : "DGZUS1041",
+      "count" : "37947"
+    } ],
+    "smallest" : "DACZY2913",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257798,
+  "name" : "time",
+  "dataTypeName" : "calendar_date",
+  "description" : "Date and time of sample, in UTC (not Chicago time)",
+  "fieldName" : "time",
+  "position" : 3,
+  "renderTypeName" : "calendar_date",
+  "tableColumnId" : 164725875,
+  "width" : 206,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "2026-07-20T00:02:18.877",
+    "null" : "0",
+    "top" : [ {
+      "item" : "2026-05-09T21:55:26.000",
+      "count" : "7"
+    }, {
+      "item" : "2026-02-23T08:13:28.000",
+      "count" : "6"
+    }, {
+      "item" : "2026-05-05T10:38:57.000",
+      "count" : "6"
+    }, {
+      "item" : "2026-05-12T07:12:18.000",
+      "count" : "6"
+    }, {
+      "item" : "2026-01-28T02:27:43.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-30T03:29:41.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-30T03:52:02.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-19T03:42:40.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-24T02:30:44.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-22T00:13:49.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-27T16:25:16.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-12T11:28:44.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-29T23:46:58.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-30T00:44:02.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-14T00:49:09.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-15T13:44:04.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-13T13:19:24.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-14T06:53:11.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-18T21:12:24.000",
+      "count" : "5"
+    }, {
+      "item" : "2026-01-13T00:24:58.000",
+      "count" : "5"
+    } ],
+    "smallest" : "2025-09-01T00:00:05.181",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "view" : "date_time"
+  }
+}, {
+  "id" : 625257799,
+  "name" : "sensor_name",
+  "dataTypeName" : "text",
+  "description" : "Community area name and number of sensor in community area",
+  "fieldName" : "sensor_name",
+  "position" : 4,
+  "renderTypeName" : "text",
+  "tableColumnId" : 164725028,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "Woodlawn 2",
+    "null" : "0",
+    "top" : [ {
+      "item" : "Lower West Side 4",
+      "count" : "99259"
+    }, {
+      "item" : "South Deering 7",
+      "count" : "96357"
+    }, {
+      "item" : "Near North Side 4",
+      "count" : "84247"
+    }, {
+      "item" : "Uptown 2",
+      "count" : "75792"
+    }, {
+      "item" : "South Lawndale 3",
+      "count" : "38112"
+    }, {
+      "item" : "Calumet Heights 2",
+      "count" : "38091"
+    }, {
+      "item" : "Morgan Park 2",
+      "count" : "38075"
+    }, {
+      "item" : "Avalon Park 2",
+      "count" : "38070"
+    }, {
+      "item" : "O'Hare 1",
+      "count" : "38064"
+    }, {
+      "item" : "Humboldt Park 4",
+      "count" : "38040"
+    }, {
+      "item" : "South Deering 3",
+      "count" : "38039"
+    }, {
+      "item" : "West Ridge 1",
+      "count" : "38037"
+    }, {
+      "item" : "Hyde Park 1",
+      "count" : "38021"
+    }, {
+      "item" : "Rogers Park 2",
+      "count" : "38016"
+    }, {
+      "item" : "West Ridge 3",
+      "count" : "37995"
+    }, {
+      "item" : "Logan Square 2",
+      "count" : "37990"
+    }, {
+      "item" : "South Deering 4",
+      "count" : "37960"
+    }, {
+      "item" : "Archer Heights 4",
+      "count" : "37956"
+    }, {
+      "item" : "Bridgeport 1",
+      "count" : "37951"
+    }, {
+      "item" : "East Side 1",
+      "count" : "37947"
+    } ],
+    "smallest" : "Albany Park 1",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257801,
+  "name" : "atmPressureIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Atmospheric pressure, Individual sample (atm), raw",
+  "fieldName" : "atmpressureindividual_raw",
+  "position" : 6,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765044,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "1069.0",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "996.0",
+      "count" : "19541"
+    }, {
+      "item" : "997.0",
+      "count" : "18225"
+    }, {
+      "item" : "993.0",
+      "count" : "17809"
+    }, {
+      "item" : "992.0",
+      "count" : "17537"
+    }, {
+      "item" : "998.0",
+      "count" : "17208"
+    }, {
+      "item" : "995.0",
+      "count" : "17185"
+    }, {
+      "item" : "994.0",
+      "count" : "15893"
+    }, {
+      "item" : "999.0",
+      "count" : "14646"
+    }, {
+      "item" : "1000.0",
+      "count" : "13608"
+    }, {
+      "item" : "991.0",
+      "count" : "12677"
+    }, {
+      "item" : "990.0",
+      "count" : "11783"
+    }, {
+      "item" : "1001.0",
+      "count" : "10935"
+    }, {
+      "item" : "1002.0",
+      "count" : "10800"
+    }, {
+      "item" : "989.0",
+      "count" : "9510"
+    }, {
+      "item" : "987.0",
+      "count" : "9440"
+    }, {
+      "item" : "988.0",
+      "count" : "8672"
+    }, {
+      "item" : "1003.0",
+      "count" : "8606"
+    }, {
+      "item" : "986.0",
+      "count" : "7713"
+    }, {
+      "item" : "1004.0",
+      "count" : "7546"
+    }, {
+      "item" : "1005.0",
+      "count" : "7101"
+    } ],
+    "smallest" : "968.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257802,
+  "name" : "atmPressureIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Atmospheric pressure, Individual sample (atm), value",
+  "fieldName" : "atmpressureindividual_value",
+  "position" : 7,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765045,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "1069.0",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "996.0",
+      "count" : "19541"
+    }, {
+      "item" : "997.0",
+      "count" : "18225"
+    }, {
+      "item" : "993.0",
+      "count" : "17809"
+    }, {
+      "item" : "992.0",
+      "count" : "17537"
+    }, {
+      "item" : "998.0",
+      "count" : "17208"
+    }, {
+      "item" : "995.0",
+      "count" : "17185"
+    }, {
+      "item" : "994.0",
+      "count" : "15893"
+    }, {
+      "item" : "999.0",
+      "count" : "14646"
+    }, {
+      "item" : "1000.0",
+      "count" : "13608"
+    }, {
+      "item" : "991.0",
+      "count" : "12677"
+    }, {
+      "item" : "990.0",
+      "count" : "11783"
+    }, {
+      "item" : "1001.0",
+      "count" : "10935"
+    }, {
+      "item" : "1002.0",
+      "count" : "10800"
+    }, {
+      "item" : "989.0",
+      "count" : "9510"
+    }, {
+      "item" : "987.0",
+      "count" : "9440"
+    }, {
+      "item" : "988.0",
+      "count" : "8672"
+    }, {
+      "item" : "1003.0",
+      "count" : "8606"
+    }, {
+      "item" : "986.0",
+      "count" : "7713"
+    }, {
+      "item" : "1004.0",
+      "count" : "7546"
+    }, {
+      "item" : "1005.0",
+      "count" : "7101"
+    } ],
+    "smallest" : "968.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257803,
+  "name" : "bcAllSourcesIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon All sources mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcallsourcesindividual_raw",
+  "position" : 8,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765046,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257804,
+  "name" : "bcAllSourcesIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon All sources mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcallsourcesindividual_value",
+  "position" : 9,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765047,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257805,
+  "name" : "bcBiomassIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Biomass mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcbiomassindividual_raw",
+  "position" : 10,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765048,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257806,
+  "name" : "bcBiomassIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Biomass mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcbiomassindividual_value",
+  "position" : 11,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765049,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257807,
+  "name" : "bcFossilFuelIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Fossil fuel mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcfossilfuelindividual_raw",
+  "position" : 12,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765050,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257808,
+  "name" : "bcFossilFuelIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Fossil fuel mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcfossilfuelindividual_value",
+  "position" : 13,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765051,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257809,
+  "name" : "bcSpectralBIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral B mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcspectralbindividual_raw",
+  "position" : 14,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765052,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257810,
+  "name" : "bcSpectralBIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral B mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcspectralbindividual_value",
+  "position" : 15,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765053,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257811,
+  "name" : "bcSpectralGIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral G mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcspectralgindividual_raw",
+  "position" : 16,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765054,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257812,
+  "name" : "bcSpectralGIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral G mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcspectralgindividual_value",
+  "position" : 17,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765055,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257813,
+  "name" : "bcSpectralIRIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral IR mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcspectralirindividual_raw",
+  "position" : 18,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765068,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257814,
+  "name" : "bcSpectralIRIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral IR mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcspectralirindividual_value",
+  "position" : 19,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765067,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257815,
+  "name" : "bcSpectralRIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral R mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcspectralrindividual_raw",
+  "position" : 20,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765066,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257816,
+  "name" : "bcSpectralRIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral R mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcspectralrindividual_value",
+  "position" : 21,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765065,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257817,
+  "name" : "bcSpectralUVIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral UV mass concentration, Individual sample (ng/m³), raw",
+  "fieldName" : "bcspectraluvindividual_raw",
+  "position" : 22,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765064,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257818,
+  "name" : "bcSpectralUVIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Black carbon Spectral UV mass concentration, Individual sample (ng/m³), value",
+  "fieldName" : "bcspectraluvindividual_value",
+  "position" : 23,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765063,
+  "cachedContents" : {
+    "non_null" : "0",
+    "null" : "10691029",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257819,
+  "name" : "no2ConcIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "NO2 concentration, Individual sample (ppb), raw",
+  "fieldName" : "no2concindividual_raw",
+  "position" : 24,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725010,
+  "cachedContents" : {
+    "non_null" : "9212976",
+    "largest" : "99.8",
+    "null" : "1478053",
+    "top" : [ {
+      "item" : "13.71",
+      "count" : "4210"
+    }, {
+      "item" : "13.01",
+      "count" : "4197"
+    }, {
+      "item" : "13.22",
+      "count" : "4181"
+    }, {
+      "item" : "12.64",
+      "count" : "4172"
+    }, {
+      "item" : "12.5",
+      "count" : "4171"
+    }, {
+      "item" : "12.47",
+      "count" : "4168"
+    }, {
+      "item" : "12.77",
+      "count" : "4166"
+    }, {
+      "item" : "13.13",
+      "count" : "4165"
+    }, {
+      "item" : "12.59",
+      "count" : "4160"
+    }, {
+      "item" : "13.15",
+      "count" : "4153"
+    }, {
+      "item" : "12.04",
+      "count" : "4145"
+    }, {
+      "item" : "12.46",
+      "count" : "4144"
+    }, {
+      "item" : "12.62",
+      "count" : "4144"
+    }, {
+      "item" : "11.57",
+      "count" : "4142"
+    }, {
+      "item" : "12.01",
+      "count" : "4140"
+    }, {
+      "item" : "12.9",
+      "count" : "4140"
+    }, {
+      "item" : "12.8",
+      "count" : "4134"
+    }, {
+      "item" : "13.29",
+      "count" : "4134"
+    }, {
+      "item" : "12.48",
+      "count" : "4132"
+    }, {
+      "item" : "12.72",
+      "count" : "4131"
+    } ],
+    "smallest" : "-100.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257820,
+  "name" : "no2ConcIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "NO2 concentration, Individual sample (ppb), value",
+  "fieldName" : "no2concindividual_value",
+  "position" : 25,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725022,
+  "cachedContents" : {
+    "non_null" : "9212976",
+    "largest" : "68.74",
+    "null" : "1478053",
+    "top" : [ {
+      "item" : "11.17",
+      "count" : "8804"
+    }, {
+      "item" : "11.42",
+      "count" : "8753"
+    }, {
+      "item" : "11.38",
+      "count" : "8727"
+    }, {
+      "item" : "11.23",
+      "count" : "8724"
+    }, {
+      "item" : "11.47",
+      "count" : "8704"
+    }, {
+      "item" : "11.31",
+      "count" : "8692"
+    }, {
+      "item" : "11.41",
+      "count" : "8690"
+    }, {
+      "item" : "11.14",
+      "count" : "8688"
+    }, {
+      "item" : "11.06",
+      "count" : "8684"
+    }, {
+      "item" : "11.19",
+      "count" : "8677"
+    }, {
+      "item" : "10.97",
+      "count" : "8672"
+    }, {
+      "item" : "11.09",
+      "count" : "8667"
+    }, {
+      "item" : "11.65",
+      "count" : "8666"
+    }, {
+      "item" : "11.61",
+      "count" : "8661"
+    }, {
+      "item" : "11.43",
+      "count" : "8654"
+    }, {
+      "item" : "11.11",
+      "count" : "8651"
+    }, {
+      "item" : "11.95",
+      "count" : "8651"
+    }, {
+      "item" : "11.56",
+      "count" : "8650"
+    }, {
+      "item" : "11.64",
+      "count" : "8646"
+    }, {
+      "item" : "11.62",
+      "count" : "8646"
+    } ],
+    "smallest" : "-0.62",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257821,
+  "name" : "pm2_5ConcMassIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "PM2.5 mass concentration, Individual sample (μg/m³), raw",
+  "fieldName" : "pm2_5concmassindividual_raw",
+  "position" : 26,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725001,
+  "cachedContents" : {
+    "non_null" : "10641368",
+    "largest" : "1019.2",
+    "null" : "49661",
+    "top" : [ {
+      "item" : "0.0",
+      "count" : "117002"
+    }, {
+      "item" : "0.58",
+      "count" : "66433"
+    }, {
+      "item" : "0.77",
+      "count" : "66410"
+    }, {
+      "item" : "0.96",
+      "count" : "57614"
+    }, {
+      "item" : "1.77",
+      "count" : "51495"
+    }, {
+      "item" : "1.58",
+      "count" : "50078"
+    }, {
+      "item" : "1.38",
+      "count" : "47846"
+    }, {
+      "item" : "1.96",
+      "count" : "47064"
+    }, {
+      "item" : "0.38",
+      "count" : "45639"
+    }, {
+      "item" : "1.15",
+      "count" : "45275"
+    }, {
+      "item" : "1.0",
+      "count" : "45166"
+    }, {
+      "item" : "3.58",
+      "count" : "44125"
+    }, {
+      "item" : "2.77",
+      "count" : "43898"
+    }, {
+      "item" : "1.19",
+      "count" : "43847"
+    }, {
+      "item" : "2.15",
+      "count" : "43321"
+    }, {
+      "item" : "2.58",
+      "count" : "42937"
+    }, {
+      "item" : "3.77",
+      "count" : "42240"
+    }, {
+      "item" : "2.96",
+      "count" : "41476"
+    }, {
+      "item" : "3.38",
+      "count" : "41423"
+    }, {
+      "item" : "3.96",
+      "count" : "41383"
+    } ],
+    "smallest" : "0.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257822,
+  "name" : "pm2_5ConcMassIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "PM2.5 mass concentration, Individual sample (μg/m³), value",
+  "fieldName" : "pm2_5concmassindividual_value",
+  "position" : 27,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725017,
+  "cachedContents" : {
+    "non_null" : "10641368",
+    "largest" : "835.74",
+    "null" : "49661",
+    "top" : [ {
+      "item" : "4.34",
+      "count" : "12905"
+    }, {
+      "item" : "4.31",
+      "count" : "12751"
+    }, {
+      "item" : "4.44",
+      "count" : "12687"
+    }, {
+      "item" : "4.15",
+      "count" : "12664"
+    }, {
+      "item" : "4.29",
+      "count" : "12643"
+    }, {
+      "item" : "4.33",
+      "count" : "12639"
+    }, {
+      "item" : "4.17",
+      "count" : "12638"
+    }, {
+      "item" : "4.22",
+      "count" : "12635"
+    }, {
+      "item" : "4.12",
+      "count" : "12631"
+    }, {
+      "item" : "4.55",
+      "count" : "12629"
+    }, {
+      "item" : "4.42",
+      "count" : "12627"
+    }, {
+      "item" : "4.35",
+      "count" : "12626"
+    }, {
+      "item" : "4.41",
+      "count" : "12605"
+    }, {
+      "item" : "4.45",
+      "count" : "12604"
+    }, {
+      "item" : "4.25",
+      "count" : "12603"
+    }, {
+      "item" : "4.11",
+      "count" : "12595"
+    }, {
+      "item" : "4.2",
+      "count" : "12594"
+    }, {
+      "item" : "4.3",
+      "count" : "12591"
+    }, {
+      "item" : "4.23",
+      "count" : "12582"
+    }, {
+      "item" : "4.26",
+      "count" : "12581"
+    } ],
+    "smallest" : "1.19",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257823,
+  "name" : "pm2_5ConcNumIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "PM2.5 number concentration, Individual sample (#/cm³), raw",
+  "fieldName" : "pm2_5concnumindividual_raw",
+  "position" : 28,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725036,
+  "cachedContents" : {
+    "non_null" : "10641368",
+    "largest" : "652.49",
+    "null" : "49661",
+    "top" : [ {
+      "item" : "0.07",
+      "count" : "6124"
+    }, {
+      "item" : "3.88",
+      "count" : "5886"
+    }, {
+      "item" : "4.2",
+      "count" : "5862"
+    }, {
+      "item" : "4.49",
+      "count" : "5854"
+    }, {
+      "item" : "4.39",
+      "count" : "5831"
+    }, {
+      "item" : "4.26",
+      "count" : "5827"
+    }, {
+      "item" : "4.24",
+      "count" : "5822"
+    }, {
+      "item" : "4.68",
+      "count" : "5821"
+    }, {
+      "item" : "4.51",
+      "count" : "5812"
+    }, {
+      "item" : "4.7",
+      "count" : "5809"
+    }, {
+      "item" : "4.07",
+      "count" : "5809"
+    }, {
+      "item" : "4.55",
+      "count" : "5803"
+    }, {
+      "item" : "4.84",
+      "count" : "5788"
+    }, {
+      "item" : "4.59",
+      "count" : "5782"
+    }, {
+      "item" : "4.03",
+      "count" : "5781"
+    }, {
+      "item" : "4.79",
+      "count" : "5771"
+    }, {
+      "item" : "4.72",
+      "count" : "5771"
+    }, {
+      "item" : "4.28",
+      "count" : "5765"
+    }, {
+      "item" : "4.41",
+      "count" : "5760"
+    }, {
+      "item" : "4.97",
+      "count" : "5757"
+    } ],
+    "smallest" : "0.06",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257824,
+  "name" : "pm2_5ConcNumIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "PM2.5 number concentration, Individual sample (#/cm³), value",
+  "fieldName" : "pm2_5concnumindividual_value",
+  "position" : 29,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725003,
+  "cachedContents" : {
+    "non_null" : "10641368",
+    "largest" : "652.49",
+    "null" : "49661",
+    "top" : [ {
+      "item" : "0.07",
+      "count" : "6124"
+    }, {
+      "item" : "3.88",
+      "count" : "5886"
+    }, {
+      "item" : "4.2",
+      "count" : "5862"
+    }, {
+      "item" : "4.49",
+      "count" : "5854"
+    }, {
+      "item" : "4.39",
+      "count" : "5831"
+    }, {
+      "item" : "4.26",
+      "count" : "5827"
+    }, {
+      "item" : "4.24",
+      "count" : "5822"
+    }, {
+      "item" : "4.68",
+      "count" : "5821"
+    }, {
+      "item" : "4.51",
+      "count" : "5812"
+    }, {
+      "item" : "4.7",
+      "count" : "5809"
+    }, {
+      "item" : "4.07",
+      "count" : "5809"
+    }, {
+      "item" : "4.55",
+      "count" : "5803"
+    }, {
+      "item" : "4.84",
+      "count" : "5788"
+    }, {
+      "item" : "4.59",
+      "count" : "5782"
+    }, {
+      "item" : "4.03",
+      "count" : "5781"
+    }, {
+      "item" : "4.79",
+      "count" : "5771"
+    }, {
+      "item" : "4.72",
+      "count" : "5771"
+    }, {
+      "item" : "4.28",
+      "count" : "5765"
+    }, {
+      "item" : "4.41",
+      "count" : "5760"
+    }, {
+      "item" : "4.97",
+      "count" : "5757"
+    } ],
+    "smallest" : "0.06",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257825,
+  "name" : "relHumidAmbientIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Relative humidity ambient, Individual sample (%), raw",
+  "fieldName" : "relhumidambientindividual",
+  "position" : 30,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765062,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "100.0",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "74.2",
+      "count" : "848"
+    }, {
+      "item" : "61.0",
+      "count" : "846"
+    }, {
+      "item" : "71.8",
+      "count" : "843"
+    }, {
+      "item" : "67.8",
+      "count" : "840"
+    }, {
+      "item" : "70.2",
+      "count" : "839"
+    }, {
+      "item" : "63.2",
+      "count" : "828"
+    }, {
+      "item" : "62.8",
+      "count" : "827"
+    }, {
+      "item" : "68.8",
+      "count" : "816"
+    }, {
+      "item" : "72.2",
+      "count" : "816"
+    }, {
+      "item" : "60.8",
+      "count" : "812"
+    }, {
+      "item" : "60.2",
+      "count" : "807"
+    }, {
+      "item" : "68.2",
+      "count" : "807"
+    }, {
+      "item" : "66.8",
+      "count" : "801"
+    }, {
+      "item" : "73.8",
+      "count" : "794"
+    }, {
+      "item" : "61.2",
+      "count" : "793"
+    }, {
+      "item" : "70.8",
+      "count" : "792"
+    }, {
+      "item" : "68.7",
+      "count" : "791"
+    }, {
+      "item" : "63.0",
+      "count" : "789"
+    }, {
+      "item" : "75.8",
+      "count" : "788"
+    }, {
+      "item" : "63.5",
+      "count" : "785"
+    } ],
+    "smallest" : "15.8",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257826,
+  "name" : "relHumidAmbientIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Relative humidity ambient, Individual sample (%), value",
+  "fieldName" : "relhumidambientindividual_1",
+  "position" : 31,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765061,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "100.0",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "74.2",
+      "count" : "848"
+    }, {
+      "item" : "61.0",
+      "count" : "846"
+    }, {
+      "item" : "71.8",
+      "count" : "843"
+    }, {
+      "item" : "67.8",
+      "count" : "840"
+    }, {
+      "item" : "70.2",
+      "count" : "839"
+    }, {
+      "item" : "63.2",
+      "count" : "828"
+    }, {
+      "item" : "62.8",
+      "count" : "827"
+    }, {
+      "item" : "68.8",
+      "count" : "816"
+    }, {
+      "item" : "72.2",
+      "count" : "816"
+    }, {
+      "item" : "60.8",
+      "count" : "812"
+    }, {
+      "item" : "60.2",
+      "count" : "807"
+    }, {
+      "item" : "68.2",
+      "count" : "807"
+    }, {
+      "item" : "66.8",
+      "count" : "801"
+    }, {
+      "item" : "73.8",
+      "count" : "794"
+    }, {
+      "item" : "61.2",
+      "count" : "793"
+    }, {
+      "item" : "70.8",
+      "count" : "792"
+    }, {
+      "item" : "68.7",
+      "count" : "791"
+    }, {
+      "item" : "63.0",
+      "count" : "789"
+    }, {
+      "item" : "75.8",
+      "count" : "788"
+    }, {
+      "item" : "63.5",
+      "count" : "785"
+    } ],
+    "smallest" : "15.8",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257827,
+  "name" : "relHumidInternalIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Relative humidity internal, Individual sample (%), raw",
+  "fieldName" : "relhumidinternalindividual",
+  "position" : 32,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725009,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "99.04",
+    "null" : "0",
+    "top" : [ {
+      "item" : "58.72",
+      "count" : "3185"
+    }, {
+      "item" : "60.13",
+      "count" : "3171"
+    }, {
+      "item" : "58.83",
+      "count" : "3158"
+    }, {
+      "item" : "59.04",
+      "count" : "3145"
+    }, {
+      "item" : "69.52",
+      "count" : "3144"
+    }, {
+      "item" : "59.6",
+      "count" : "3130"
+    }, {
+      "item" : "61.28",
+      "count" : "3128"
+    }, {
+      "item" : "58.18",
+      "count" : "3126"
+    }, {
+      "item" : "60.67",
+      "count" : "3125"
+    }, {
+      "item" : "70.21",
+      "count" : "3117"
+    }, {
+      "item" : "68.06",
+      "count" : "3116"
+    }, {
+      "item" : "68.93",
+      "count" : "3110"
+    }, {
+      "item" : "59.31",
+      "count" : "3109"
+    }, {
+      "item" : "66.11",
+      "count" : "3106"
+    }, {
+      "item" : "69.34",
+      "count" : "3106"
+    }, {
+      "item" : "59.15",
+      "count" : "3104"
+    }, {
+      "item" : "59.55",
+      "count" : "3103"
+    }, {
+      "item" : "60.04",
+      "count" : "3098"
+    }, {
+      "item" : "58.84",
+      "count" : "3098"
+    }, {
+      "item" : "59.44",
+      "count" : "3096"
+    } ],
+    "smallest" : "13.64",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257828,
+  "name" : "relHumidInternalIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Relative humidity internal, Individual sample (%), value",
+  "fieldName" : "relhumidinternalindividual_1",
+  "position" : 33,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164725013,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "99.04",
+    "null" : "0",
+    "top" : [ {
+      "item" : "58.72",
+      "count" : "3185"
+    }, {
+      "item" : "60.13",
+      "count" : "3171"
+    }, {
+      "item" : "58.83",
+      "count" : "3158"
+    }, {
+      "item" : "59.04",
+      "count" : "3145"
+    }, {
+      "item" : "69.52",
+      "count" : "3144"
+    }, {
+      "item" : "59.6",
+      "count" : "3130"
+    }, {
+      "item" : "61.28",
+      "count" : "3128"
+    }, {
+      "item" : "58.18",
+      "count" : "3126"
+    }, {
+      "item" : "60.67",
+      "count" : "3125"
+    }, {
+      "item" : "70.21",
+      "count" : "3117"
+    }, {
+      "item" : "68.06",
+      "count" : "3116"
+    }, {
+      "item" : "68.93",
+      "count" : "3110"
+    }, {
+      "item" : "59.31",
+      "count" : "3109"
+    }, {
+      "item" : "66.11",
+      "count" : "3106"
+    }, {
+      "item" : "69.34",
+      "count" : "3106"
+    }, {
+      "item" : "59.15",
+      "count" : "3104"
+    }, {
+      "item" : "59.55",
+      "count" : "3103"
+    }, {
+      "item" : "60.04",
+      "count" : "3098"
+    }, {
+      "item" : "58.84",
+      "count" : "3098"
+    }, {
+      "item" : "59.44",
+      "count" : "3096"
+    } ],
+    "smallest" : "13.64",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257829,
+  "name" : "temperatureAmbientIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Temperature ambient, Individual sample (°C), raw",
+  "fieldName" : "temperatureambientindividual",
+  "position" : 34,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765069,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "40.7",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "6.2",
+      "count" : "1607"
+    }, {
+      "item" : "6.3",
+      "count" : "1540"
+    }, {
+      "item" : "0.0",
+      "count" : "1482"
+    }, {
+      "item" : "5.8",
+      "count" : "1480"
+    }, {
+      "item" : "6.0",
+      "count" : "1478"
+    }, {
+      "item" : "6.7",
+      "count" : "1434"
+    }, {
+      "item" : "8.8",
+      "count" : "1424"
+    }, {
+      "item" : "5.9",
+      "count" : "1416"
+    }, {
+      "item" : "5.7",
+      "count" : "1395"
+    }, {
+      "item" : "6.1",
+      "count" : "1380"
+    }, {
+      "item" : "8.3",
+      "count" : "1350"
+    }, {
+      "item" : "6.8",
+      "count" : "1328"
+    }, {
+      "item" : "8.2",
+      "count" : "1320"
+    }, {
+      "item" : "8.7",
+      "count" : "1318"
+    }, {
+      "item" : "6.5",
+      "count" : "1302"
+    }, {
+      "item" : "9.2",
+      "count" : "1296"
+    }, {
+      "item" : "6.6",
+      "count" : "1295"
+    }, {
+      "item" : "6.4",
+      "count" : "1294"
+    }, {
+      "item" : "5.2",
+      "count" : "1287"
+    }, {
+      "item" : "8.6",
+      "count" : "1284"
+    } ],
+    "smallest" : "-34.8",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257830,
+  "name" : "temperatureAmbientIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Temperature ambient, Individual sample (°C), value",
+  "fieldName" : "temperatureambientindividual_1",
+  "position" : 35,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765070,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "40.7",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "6.2",
+      "count" : "1607"
+    }, {
+      "item" : "6.3",
+      "count" : "1540"
+    }, {
+      "item" : "0.0",
+      "count" : "1482"
+    }, {
+      "item" : "5.8",
+      "count" : "1480"
+    }, {
+      "item" : "6.0",
+      "count" : "1478"
+    }, {
+      "item" : "6.7",
+      "count" : "1434"
+    }, {
+      "item" : "8.8",
+      "count" : "1424"
+    }, {
+      "item" : "5.9",
+      "count" : "1416"
+    }, {
+      "item" : "5.7",
+      "count" : "1395"
+    }, {
+      "item" : "6.1",
+      "count" : "1380"
+    }, {
+      "item" : "8.3",
+      "count" : "1350"
+    }, {
+      "item" : "6.8",
+      "count" : "1328"
+    }, {
+      "item" : "8.2",
+      "count" : "1320"
+    }, {
+      "item" : "8.7",
+      "count" : "1318"
+    }, {
+      "item" : "6.5",
+      "count" : "1302"
+    }, {
+      "item" : "9.2",
+      "count" : "1296"
+    }, {
+      "item" : "6.6",
+      "count" : "1295"
+    }, {
+      "item" : "6.4",
+      "count" : "1294"
+    }, {
+      "item" : "5.2",
+      "count" : "1287"
+    }, {
+      "item" : "8.6",
+      "count" : "1284"
+    } ],
+    "smallest" : "-34.8",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257831,
+  "name" : "temperatureInternalIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Temperature internal, Individual sample (°C), raw",
+  "fieldName" : "temperatureinternalindividual",
+  "position" : 36,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164724996,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "42.44",
+    "null" : "0",
+    "top" : [ {
+      "item" : "20.37",
+      "count" : "5218"
+    }, {
+      "item" : "20.44",
+      "count" : "5140"
+    }, {
+      "item" : "20.47",
+      "count" : "5124"
+    }, {
+      "item" : "20.23",
+      "count" : "5123"
+    }, {
+      "item" : "20.19",
+      "count" : "5070"
+    }, {
+      "item" : "20.54",
+      "count" : "5051"
+    }, {
+      "item" : "20.4",
+      "count" : "5031"
+    }, {
+      "item" : "20.51",
+      "count" : "4997"
+    }, {
+      "item" : "20.33",
+      "count" : "4986"
+    }, {
+      "item" : "20.62",
+      "count" : "4965"
+    }, {
+      "item" : "20.58",
+      "count" : "4959"
+    }, {
+      "item" : "20.64",
+      "count" : "4939"
+    }, {
+      "item" : "20.9",
+      "count" : "4933"
+    }, {
+      "item" : "20.52",
+      "count" : "4932"
+    }, {
+      "item" : "20.27",
+      "count" : "4911"
+    }, {
+      "item" : "20.13",
+      "count" : "4908"
+    }, {
+      "item" : "20.56",
+      "count" : "4908"
+    }, {
+      "item" : "21.52",
+      "count" : "4891"
+    }, {
+      "item" : "20.48",
+      "count" : "4879"
+    }, {
+      "item" : "20.09",
+      "count" : "4866"
+    } ],
+    "smallest" : "-22.74",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257832,
+  "name" : "temperatureInternalIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Temperature internal, Individual sample (°C), value",
+  "fieldName" : "temperatureinternalindividual_1",
+  "position" : 37,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164724997,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "42.44",
+    "null" : "0",
+    "top" : [ {
+      "item" : "20.37",
+      "count" : "5218"
+    }, {
+      "item" : "20.44",
+      "count" : "5140"
+    }, {
+      "item" : "20.47",
+      "count" : "5124"
+    }, {
+      "item" : "20.23",
+      "count" : "5123"
+    }, {
+      "item" : "20.19",
+      "count" : "5070"
+    }, {
+      "item" : "20.54",
+      "count" : "5051"
+    }, {
+      "item" : "20.4",
+      "count" : "5031"
+    }, {
+      "item" : "20.51",
+      "count" : "4997"
+    }, {
+      "item" : "20.33",
+      "count" : "4986"
+    }, {
+      "item" : "20.62",
+      "count" : "4965"
+    }, {
+      "item" : "20.58",
+      "count" : "4959"
+    }, {
+      "item" : "20.64",
+      "count" : "4939"
+    }, {
+      "item" : "20.9",
+      "count" : "4933"
+    }, {
+      "item" : "20.52",
+      "count" : "4932"
+    }, {
+      "item" : "20.27",
+      "count" : "4911"
+    }, {
+      "item" : "20.13",
+      "count" : "4908"
+    }, {
+      "item" : "20.56",
+      "count" : "4908"
+    }, {
+      "item" : "21.52",
+      "count" : "4891"
+    }, {
+      "item" : "20.48",
+      "count" : "4879"
+    }, {
+      "item" : "20.09",
+      "count" : "4866"
+    } ],
+    "smallest" : "-22.74",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : {
+    "decimalSeparator" : ".",
+    "groupSeparator" : ","
+  }
+}, {
+  "id" : 625257833,
+  "name" : "windDirectionIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Wind direction, Individual sample (°), raw",
+  "fieldName" : "winddirectionindividual_raw",
+  "position" : 38,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765060,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "360.0",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "0.0",
+      "count" : "1960"
+    }, {
+      "item" : "301.06",
+      "count" : "31"
+    }, {
+      "item" : "354.71",
+      "count" : "29"
+    }, {
+      "item" : "302.99",
+      "count" : "27"
+    }, {
+      "item" : "348.78",
+      "count" : "26"
+    }, {
+      "item" : "319.86",
+      "count" : "26"
+    }, {
+      "item" : "320.06",
+      "count" : "26"
+    }, {
+      "item" : "352.57",
+      "count" : "26"
+    }, {
+      "item" : "315.12",
+      "count" : "25"
+    }, {
+      "item" : "304.25",
+      "count" : "25"
+    }, {
+      "item" : "296.48",
+      "count" : "25"
+    }, {
+      "item" : "321.0",
+      "count" : "25"
+    }, {
+      "item" : "312.94",
+      "count" : "25"
+    }, {
+      "item" : "320.12",
+      "count" : "25"
+    }, {
+      "item" : "317.16",
+      "count" : "24"
+    }, {
+      "item" : "92.53",
+      "count" : "24"
+    }, {
+      "item" : "317.29",
+      "count" : "24"
+    }, {
+      "item" : "97.94",
+      "count" : "24"
+    }, {
+      "item" : "297.97",
+      "count" : "24"
+    }, {
+      "item" : "319.59",
+      "count" : "24"
+    } ],
+    "smallest" : "0.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257834,
+  "name" : "windDirectionIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Wind direction, Individual sample (°), value",
+  "fieldName" : "winddirectionindividual_value",
+  "position" : 39,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765059,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "360.0",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "0.0",
+      "count" : "1960"
+    }, {
+      "item" : "301.06",
+      "count" : "31"
+    }, {
+      "item" : "354.71",
+      "count" : "29"
+    }, {
+      "item" : "302.99",
+      "count" : "27"
+    }, {
+      "item" : "348.78",
+      "count" : "26"
+    }, {
+      "item" : "319.86",
+      "count" : "26"
+    }, {
+      "item" : "320.06",
+      "count" : "26"
+    }, {
+      "item" : "352.57",
+      "count" : "26"
+    }, {
+      "item" : "315.12",
+      "count" : "25"
+    }, {
+      "item" : "304.25",
+      "count" : "25"
+    }, {
+      "item" : "296.48",
+      "count" : "25"
+    }, {
+      "item" : "321.0",
+      "count" : "25"
+    }, {
+      "item" : "312.94",
+      "count" : "25"
+    }, {
+      "item" : "320.12",
+      "count" : "25"
+    }, {
+      "item" : "317.16",
+      "count" : "24"
+    }, {
+      "item" : "92.53",
+      "count" : "24"
+    }, {
+      "item" : "317.29",
+      "count" : "24"
+    }, {
+      "item" : "97.94",
+      "count" : "24"
+    }, {
+      "item" : "297.97",
+      "count" : "24"
+    }, {
+      "item" : "319.59",
+      "count" : "24"
+    } ],
+    "smallest" : "0.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257835,
+  "name" : "windSpeedIndividual.raw",
+  "dataTypeName" : "number",
+  "description" : "Wind speed, Individual sample (m/sec), raw",
+  "fieldName" : "windspeedindividual_raw",
+  "position" : 40,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765058,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "10.8",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "0.71",
+      "count" : "1575"
+    }, {
+      "item" : "0.72",
+      "count" : "1543"
+    }, {
+      "item" : "0.62",
+      "count" : "1540"
+    }, {
+      "item" : "0.66",
+      "count" : "1516"
+    }, {
+      "item" : "0.7",
+      "count" : "1510"
+    }, {
+      "item" : "0.74",
+      "count" : "1502"
+    }, {
+      "item" : "0.8",
+      "count" : "1501"
+    }, {
+      "item" : "0.76",
+      "count" : "1500"
+    }, {
+      "item" : "0.75",
+      "count" : "1497"
+    }, {
+      "item" : "0.79",
+      "count" : "1494"
+    }, {
+      "item" : "0.65",
+      "count" : "1490"
+    }, {
+      "item" : "0.63",
+      "count" : "1487"
+    }, {
+      "item" : "0.67",
+      "count" : "1481"
+    }, {
+      "item" : "0.69",
+      "count" : "1474"
+    }, {
+      "item" : "0.78",
+      "count" : "1473"
+    }, {
+      "item" : "0.59",
+      "count" : "1465"
+    }, {
+      "item" : "0.64",
+      "count" : "1465"
+    }, {
+      "item" : "0.84",
+      "count" : "1461"
+    }, {
+      "item" : "0.73",
+      "count" : "1449"
+    }, {
+      "item" : "0.68",
+      "count" : "1448"
+    } ],
+    "smallest" : "0.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257836,
+  "name" : "windSpeedIndividual.value",
+  "dataTypeName" : "number",
+  "description" : "Wind speed, Individual sample (m/sec), value",
+  "fieldName" : "windspeedindividual_value",
+  "position" : 41,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164765057,
+  "cachedContents" : {
+    "non_null" : "320366",
+    "largest" : "10.8",
+    "null" : "10370663",
+    "top" : [ {
+      "item" : "0.71",
+      "count" : "1575"
+    }, {
+      "item" : "0.72",
+      "count" : "1543"
+    }, {
+      "item" : "0.62",
+      "count" : "1540"
+    }, {
+      "item" : "0.66",
+      "count" : "1516"
+    }, {
+      "item" : "0.7",
+      "count" : "1510"
+    }, {
+      "item" : "0.74",
+      "count" : "1502"
+    }, {
+      "item" : "0.8",
+      "count" : "1501"
+    }, {
+      "item" : "0.76",
+      "count" : "1500"
+    }, {
+      "item" : "0.75",
+      "count" : "1497"
+    }, {
+      "item" : "0.79",
+      "count" : "1494"
+    }, {
+      "item" : "0.65",
+      "count" : "1490"
+    }, {
+      "item" : "0.63",
+      "count" : "1487"
+    }, {
+      "item" : "0.67",
+      "count" : "1481"
+    }, {
+      "item" : "0.69",
+      "count" : "1474"
+    }, {
+      "item" : "0.78",
+      "count" : "1473"
+    }, {
+      "item" : "0.59",
+      "count" : "1465"
+    }, {
+      "item" : "0.64",
+      "count" : "1465"
+    }, {
+      "item" : "0.84",
+      "count" : "1461"
+    }, {
+      "item" : "0.73",
+      "count" : "1449"
+    }, {
+      "item" : "0.68",
+      "count" : "1448"
+    } ],
+    "smallest" : "0.0",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257838,
+  "name" : "latitude",
+  "dataTypeName" : "number",
+  "description" : "Latitude of the sensor location",
+  "fieldName" : "latitude",
+  "position" : 42,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164778085,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "42.017003",
+    "null" : "0",
+    "top" : [ {
+      "item" : "41.964742",
+      "count" : "103748"
+    }, {
+      "item" : "41.84002135",
+      "count" : "99259"
+    }, {
+      "item" : "41.66442141105966",
+      "count" : "96357"
+    }, {
+      "item" : "41.687495",
+      "count" : "95517"
+    }, {
+      "item" : "41.965175",
+      "count" : "94764"
+    }, {
+      "item" : "41.89454935",
+      "count" : "84247"
+    }, {
+      "item" : "41.97559665",
+      "count" : "75792"
+    }, {
+      "item" : "41.8403843",
+      "count" : "38112"
+    }, {
+      "item" : "41.7259095",
+      "count" : "38091"
+    }, {
+      "item" : "41.689594850000006",
+      "count" : "38075"
+    }, {
+      "item" : "41.73883825",
+      "count" : "38070"
+    }, {
+      "item" : "41.9762844",
+      "count" : "38064"
+    }, {
+      "item" : "41.89083265",
+      "count" : "38040"
+    }, {
+      "item" : "41.70277366369161",
+      "count" : "38039"
+    }, {
+      "item" : "42.01665715",
+      "count" : "38037"
+    }, {
+      "item" : "41.79964665",
+      "count" : "38021"
+    }, {
+      "item" : "42.0027981",
+      "count" : "38016"
+    }, {
+      "item" : "42.002902250000005",
+      "count" : "37995"
+    }, {
+      "item" : "41.92201145",
+      "count" : "37990"
+    }, {
+      "item" : "41.687832349999994",
+      "count" : "37960"
+    } ],
+    "smallest" : "41.64887855",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257839,
+  "name" : "longitude",
+  "dataTypeName" : "number",
+  "description" : "Longitude of the sensor location",
+  "fieldName" : "longitude",
+  "position" : 43,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164778086,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "-87.53549803584423",
+    "null" : "0",
+    "top" : [ {
+      "item" : "-87.749434",
+      "count" : "103748"
+    }, {
+      "item" : "-87.66866860577547",
+      "count" : "99259"
+    }, {
+      "item" : "-87.58654247521171",
+      "count" : "96357"
+    }, {
+      "item" : "-87.538083",
+      "count" : "95517"
+    }, {
+      "item" : "-87.876252",
+      "count" : "94764"
+    }, {
+      "item" : "-87.63665349658982",
+      "count" : "84247"
+    }, {
+      "item" : "-87.65386596902835",
+      "count" : "75792"
+    }, {
+      "item" : "-87.71981834946608",
+      "count" : "38112"
+    }, {
+      "item" : "-87.5695133989071",
+      "count" : "38091"
+    }, {
+      "item" : "-87.65379678317397",
+      "count" : "38075"
+    }, {
+      "item" : "-87.5685253",
+      "count" : "38070"
+    }, {
+      "item" : "-87.8527641",
+      "count" : "38064"
+    }, {
+      "item" : "-87.71959863710754",
+      "count" : "38040"
+    }, {
+      "item" : "-87.55285081796137",
+      "count" : "38039"
+    }, {
+      "item" : "-87.7077947",
+      "count" : "38037"
+    }, {
+      "item" : "-87.60179992085315",
+      "count" : "38021"
+    }, {
+      "item" : "-87.67195804163265",
+      "count" : "38016"
+    }, {
+      "item" : "-87.6903495",
+      "count" : "37995"
+    }, {
+      "item" : "-87.67250156057692",
+      "count" : "37990"
+    }, {
+      "item" : "-87.55325261922826",
+      "count" : "37960"
+    } ],
+    "smallest" : "-87.876252",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257840,
+  "name" : "location",
+  "dataTypeName" : "point",
+  "description" : "Location of the sensor in a format that allows for creation of maps and other geographic operations on this data portal",
+  "fieldName" : "location",
+  "position" : 44,
+  "renderTypeName" : "point",
+  "tableColumnId" : 164778087,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "null" : "0",
+    "top" : [ {
+      "item" : {
+        "coordinates" : [ -87.749434, 41.964742 ],
+        "type" : "Point"
+      },
+      "count" : "103748"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.66866860577547, 41.84002135 ],
+        "type" : "Point"
+      },
+      "count" : "99259"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.58654247521171, 41.66442141105966 ],
+        "type" : "Point"
+      },
+      "count" : "96357"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.538083, 41.687495 ],
+        "type" : "Point"
+      },
+      "count" : "95517"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.876252, 41.965175 ],
+        "type" : "Point"
+      },
+      "count" : "94764"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.63665349658982, 41.89454935 ],
+        "type" : "Point"
+      },
+      "count" : "84247"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.65386596902835, 41.97559665 ],
+        "type" : "Point"
+      },
+      "count" : "75792"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.71981834946608, 41.8403843 ],
+        "type" : "Point"
+      },
+      "count" : "38112"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.5695133989071, 41.7259095 ],
+        "type" : "Point"
+      },
+      "count" : "38091"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.65379678317397, 41.689594850000006 ],
+        "type" : "Point"
+      },
+      "count" : "38075"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.5685253, 41.73883825 ],
+        "type" : "Point"
+      },
+      "count" : "38070"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.8527641, 41.9762844 ],
+        "type" : "Point"
+      },
+      "count" : "38064"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.71959863710754, 41.89083265 ],
+        "type" : "Point"
+      },
+      "count" : "38040"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.55285081796137, 41.70277366369161 ],
+        "type" : "Point"
+      },
+      "count" : "38039"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.7077947, 42.01665715 ],
+        "type" : "Point"
+      },
+      "count" : "38037"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.60179992085315, 41.79964665 ],
+        "type" : "Point"
+      },
+      "count" : "38021"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.67195804163265, 42.0027981 ],
+        "type" : "Point"
+      },
+      "count" : "38016"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.6903495, 42.002902250000005 ],
+        "type" : "Point"
+      },
+      "count" : "37995"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.67250156057692, 41.92201145 ],
+        "type" : "Point"
+      },
+      "count" : "37990"
+    }, {
+      "item" : {
+        "coordinates" : [ -87.55325261922826, 41.687832349999994 ],
+        "type" : "Point"
+      },
+      "count" : "37960"
+    } ],
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257837,
+  "name" : "record_id",
+  "dataTypeName" : "text",
+  "description" : "A unique ID for the record.",
+  "fieldName" : "record_id",
+  "position" : 45,
+  "renderTypeName" : "text",
+  "tableColumnId" : 164765056,
+  "cachedContents" : {
+    "non_null" : "10691029",
+    "largest" : "DZUWB2477_2026-07-20T00_01",
+    "null" : "0",
+    "top" : [ {
+      "item" : "DACZY2913_2025-09-01T00_31",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T00_48",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T01_05",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T01_22",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T01_39",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T01_56",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T02_13",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T02_30",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T02_47",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T03_04",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T03_21",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T03_38",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T03_55",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T04_12",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T04_29",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T04_46",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T05_03",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T05_20",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T05_37",
+      "count" : "1"
+    }, {
+      "item" : "DACZY2913_2025-09-01T00_14",
+      "count" : "1"
+    } ],
+    "smallest" : "DACZY2913_2025-09-01T00_14",
+    "count" : "10691029",
+    "cardinality" : "10691029"
+  },
+  "format" : { }
+}, {
+  "id" : 625257841,
+  "name" : "Boundaries - ZIP Codes",
+  "dataTypeName" : "number",
+  "description" : "This column was automatically created in order to record in what polygon from the dataset 'Boundaries - ZIP Codes' (rpca-8um6) the point in column 'location' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+  "fieldName" : ":@computed_region_rpca_8um6",
+  "position" : 46,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164778088,
+  "computationStrategy" : {
+    "source_columns" : [ "location" ],
+    "type" : "georegion_match_on_point",
+    "parameters" : {
+      "region" : "_rpca-8um6",
+      "primary_key" : "_feature_id"
+    }
+  },
+  "format" : { }
+}, {
+  "id" : 625257842,
+  "name" : "Community Areas",
+  "dataTypeName" : "number",
+  "description" : "This column was automatically created in order to record in what polygon from the dataset 'Community Areas' (vrxf-vc4k) the point in column 'location' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+  "fieldName" : ":@computed_region_vrxf_vc4k",
+  "position" : 47,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164778089,
+  "computationStrategy" : {
+    "source_columns" : [ "location" ],
+    "type" : "georegion_match_on_point",
+    "parameters" : {
+      "region" : "_vrxf-vc4k",
+      "primary_key" : "_feature_id"
+    }
+  },
+  "format" : { }
+}, {
+  "id" : 625257843,
+  "name" : "Zip Codes",
+  "dataTypeName" : "number",
+  "description" : "This column was automatically created in order to record in what polygon from the dataset 'Zip Codes' (6mkv-f3dw) the point in column 'location' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+  "fieldName" : ":@computed_region_6mkv_f3dw",
+  "position" : 48,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164778090,
+  "computationStrategy" : {
+    "source_columns" : [ "location" ],
+    "type" : "georegion_match_on_point",
+    "parameters" : {
+      "region" : "_6mkv-f3dw",
+      "primary_key" : "_feature_id"
+    }
+  },
+  "format" : { }
+}, {
+  "id" : 625257844,
+  "name" : "Census Tracts",
+  "dataTypeName" : "number",
+  "description" : "This column was automatically created in order to record in what polygon from the dataset 'Census Tracts' (bdys-3d7i) the point in column 'location' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+  "fieldName" : ":@computed_region_bdys_3d7i",
+  "position" : 49,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164778091,
+  "computationStrategy" : {
+    "source_columns" : [ "location" ],
+    "type" : "georegion_match_on_point",
+    "parameters" : {
+      "region" : "_bdys-3d7i",
+      "primary_key" : "_feature_id"
+    }
+  },
+  "format" : { }
+}, {
+  "id" : 625257845,
+  "name" : "Wards 2023-",
+  "dataTypeName" : "number",
+  "description" : "This column was automatically created in order to record in what polygon from the dataset 'Wards 2023-' (8hcu-yrd4) the point in column 'location' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+  "fieldName" : ":@computed_region_8hcu_yrd4",
+  "position" : 50,
+  "renderTypeName" : "number",
+  "tableColumnId" : 164778092,
+  "computationStrategy" : {
+    "source_columns" : [ "location" ],
+    "type" : "georegion_match_on_point",
+    "parameters" : {
+      "region" : "_8hcu-yrd4",
+      "primary_key" : "_feature_id"
+    }
+  },
+  "format" : { }
+} ]

@@ -66,7 +66,7 @@ class Summary:
     measurement_columns: list[str]
     source_rows_scanned: int = 0
     sources: set[str] = field(default_factory=set)
-    candidate_combinations: int = 0
+    eligible_observations: int = 0
     unique_records: dict[tuple[str, str], dict[str, Any]] = field(default_factory=dict)
     measurement_non_null_counts: Counter[str] = field(default_factory=Counter)
     sentinel_counts: Counter[str] = field(default_factory=Counter)
@@ -79,8 +79,8 @@ class Summary:
     output_size: int = 0
 
     @property
-    def duplicate_combinations_skipped(self) -> int:
-        return self.candidate_combinations - len(self.unique_records)
+    def repeated_observations_collapsed(self) -> int:
+        return self.eligible_observations - len(self.unique_records)
 
 
 DEFINITIONS: dict[str, Definition] = {
@@ -91,7 +91,11 @@ DEFINITIONS: dict[str, Definition] = {
         output_name="02_beach_weather_topic_texts.jsonl",
         source_alias="station_name",
         timestamp_alias="measurement_timestamp",
-        administrative_aliases=("measurement_id", "record_id"),
+        administrative_aliases=(
+            "measurement_id",
+            "record_id",
+            "measurement_timestamp_label",
+        ),
     ),
     "beach_water": Definition(
         key="beach_water",
@@ -100,7 +104,11 @@ DEFINITIONS: dict[str, Definition] = {
         output_name="03_beach_water_topic_texts.jsonl",
         source_alias="beach_name",
         timestamp_alias="measurement_timestamp",
-        administrative_aliases=("measurement_id", "record_id"),
+        administrative_aliases=(
+            "measurement_id",
+            "record_id",
+            "measurement_timestamp_label",
+        ),
     ),
     "open_air": Definition(
         key="open_air",
@@ -359,7 +367,7 @@ def scan_wide(dataset: Resolved, summary: Summary, chunk_size: int) -> None:
                 )
             eligible = source_valid & value_valid
             candidate_count = int(eligible.sum())
-            summary.candidate_combinations += candidate_count
+            summary.eligible_observations += candidate_count
             if not candidate_count:
                 continue
             selection = [dataset.source]
@@ -395,7 +403,7 @@ def scan_sgim(dataset: Resolved, summary: Summary, chunk_size: int) -> None:
         eligible = source_valid & measurement_valid
         summary.sources.update(chunk.loc[source_valid, dataset.source].astype(str).tolist())
         summary.measurement_non_null_counts[dataset.measurement] += int(measurement_valid.sum())
-        summary.candidate_combinations += int(eligible.sum())
+        summary.eligible_observations += int(eligible.sum())
         valid = chunk.loc[eligible]
         if not valid.empty:
             new_pairs = valid.drop_duplicates(subset=[dataset.source, dataset.measurement])
@@ -448,6 +456,7 @@ def validate_records(records: Sequence[dict[str, Any]]) -> None:
     topics: set[str] = set()
     forbidden_keys = {
         "time",
+        "measurement_timestamp",
         "measurement_time",
         "measurement_value",
         "value",
@@ -463,6 +472,8 @@ def validate_records(records: Sequence[dict[str, Any]]) -> None:
     for record in records:
         if not all(key in record for key in ("topic", "measurement_key", "text")):
             raise ValueError(f"Record lacks a required key: {record}")
+        if not str(record["measurement_key"]).strip():
+            raise ValueError(f"Record has empty measurement_key: {record}")
         if not str(record["text"]).strip():
             raise ValueError(f"Record has empty text: {record}")
         topic = str(record["topic"])
@@ -476,6 +487,90 @@ def validate_records(records: Sequence[dict[str, Any]]) -> None:
             raise ValueError(f"Record contains nested data: {record}")
         encoded = json.dumps(record, ensure_ascii=False, allow_nan=False)
         json.loads(encoded)
+
+
+def validate_output_file(path: Path) -> tuple[list[dict[str, Any]], dict[str, bool]]:
+    records: list[dict[str, Any]] = []
+    json_valid = True
+    with path.open(encoding="utf-8") as source:
+        for line in source:
+            try:
+                value = json.loads(line)
+            except json.JSONDecodeError:
+                json_valid = False
+                continue
+            if not isinstance(value, dict):
+                json_valid = False
+                continue
+            records.append(value)
+
+    topics = [str(record.get("topic", "")) for record in records]
+    forbidden_fields = {
+        "time",
+        "measurement_timestamp",
+        "measurement_time",
+        "measurement_value",
+        "value",
+        "timestamp",
+        "tags",
+        "latitude",
+        "longitude",
+        "record_id",
+    }
+    timestamp_label_present = any(
+        normalize_name(str(record.get("measurement_key", "")))
+        == "measurement_timestamp_label"
+        or any(normalize_name(key) == "measurement_timestamp_label" for key in record)
+        for record in records
+    )
+    results = {
+        "every line is valid JSON": json_valid,
+        "topic values are unique": len(topics) == len(set(topics)),
+        "text is present and non-empty": all(str(record.get("text", "")).strip() for record in records),
+        "measurement_key is present and non-empty": all(
+            str(record.get("measurement_key", "")).strip() for record in records
+        ),
+        "measurement_timestamp_label is absent": not timestamp_label_present,
+        "no topic ends with /measurement_timestamp_label": all(
+            not topic.endswith("/measurement_timestamp_label") for topic in topics
+        ),
+        "timestamp and telemetry value fields are absent": all(
+            not forbidden_fields.intersection(record) for record in records
+        ),
+        "nested dictionaries and lists are absent": all(
+            not any(isinstance(value, (dict, list)) for value in record.values())
+            for record in records
+        ),
+    }
+    return records, results
+
+
+def print_output_validation(path: Path) -> None:
+    records, results = validate_output_file(path)
+    print("Explicit output validation:")
+    for label, passed in results.items():
+        print(f"- {label}: {'PASS' if passed else 'FAIL'}")
+    source_key = next(
+        (
+            key
+            for key in ("station_name", "beach_name", "datasourceid", "data_stream_id")
+            if any(key in record for record in records)
+        ),
+        "",
+    )
+    sources = {str(record[source_key]) for record in records if source_key in record}
+    measurement_keys = sorted({str(record["measurement_key"]) for record in records})
+    print(f"Output record count: {len(records):,}")
+    print(f"Unique station/beach count: {len(sources):,}")
+    print(f"Unique measurement_key count: {len(measurement_keys):,}")
+    print(f"Sorted measurement_key list: {measurement_keys}")
+    print("First 5 validated output records:")
+    for record in records[:5]:
+        print(json.dumps(record, ensure_ascii=False))
+    print(f"Final output path: {path.resolve()}")
+    failures = [label for label, passed in results.items() if not passed]
+    if failures:
+        raise ValueError("Output validation failed: " + ", ".join(failures))
 
 
 def write_output(path: Path, records: Sequence[dict[str, Any]], overwrite: bool) -> None:
@@ -525,8 +620,9 @@ def print_summary(summary: Summary) -> None:
     print(f"Source rows scanned: {summary.source_rows_scanned:,}")
     print(f"Source count: {len(summary.sources):,}")
     print(f"Measurement-column count: {len(summary.measurement_columns):,}")
-    print(f"Candidate combinations found: {summary.candidate_combinations:,}")
-    print(f"Duplicate combinations skipped: {summary.duplicate_combinations_skipped:,}")
+    print(f"Eligible non-null observations scanned: {summary.eligible_observations:,}")
+    print(f"Unique source-measurement pairs written: {len(records):,}")
+    print(f"Repeated observations collapsed: {summary.repeated_observations_collapsed:,}")
     print(f"Unique topic count: {len(records):,}")
     print(f"Entirely-null measurement columns: {entirely_null}")
     print(f"Sentinel counts by column: {dict(summary.sentinel_counts)}")
@@ -593,6 +689,7 @@ def process(dataset: Resolved, output_path: Path, chunk_size: int, overwrite: bo
     summary.input_unchanged = before.st_size == after.st_size and before.st_mtime_ns == after.st_mtime_ns
     summary.output_size = output_path.stat().st_size
     print_summary(summary)
+    print_output_validation(output_path)
     return summary
 
 
