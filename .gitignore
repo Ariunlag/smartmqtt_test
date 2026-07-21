@@ -1,0 +1,17 @@
+# Raw data
+data/raw/
+
+# Large files
+*.csv
+*.parquet
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+.env/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
