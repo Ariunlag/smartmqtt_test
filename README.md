@@ -85,9 +85,12 @@ files are protected by default; pass `--overwrite` when replacement is intended.
 
 The one-page Streamlit application in `app/embedding_explorer.py` compares how
 metadata representations affect unsupervised clustering of the same logical IoT
-topics. This is clustering, not classification: it does not calculate accuracy,
-use synthetic ground truth, or claim that similarity proves scientific
-equivalence.
+topics. This is clustering, not classification. The real-data experiment has no
+ground-truth labels and does not calculate real-data accuracy. The generated
+controlled benchmark contains expected groups used only for post-clustering
+diagnostics; they are never embedded or passed to clustering. Embedding
+similarity does not prove scientific equivalence, and synthetic metrics do not
+represent real-data accuracy.
 
 ### Metadata representation approaches
 
@@ -165,8 +168,15 @@ $env:TMP = $env:TEMP
 python -m pytest -q --basetemp="$PWD\.tmp\pytest"
 ```
 
-Launch Streamlit directly with `python -m streamlit run app/embedding_explorer.py`
-or use the launcher:
+Launch Streamlit directly with:
+
+```powershell
+python -m streamlit run app/embedding_explorer.py --server.fileWatcherType none
+```
+
+The disabled file watcher avoids irrelevant optional Transformers vision-module
+imports; torchvision is not required for this text-embedding experiment. You
+can also use the launcher:
 
 ```powershell
 .\scripts\run_embedding_ui.ps1

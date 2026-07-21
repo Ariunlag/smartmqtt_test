@@ -14,4 +14,4 @@ New-Item -ItemType Directory -Force -Path $tempPath | Out-Null
 $env:TEMP = (Resolve-Path -LiteralPath $tempPath).Path
 $env:TMP = $env:TEMP
 
-python -m streamlit run app/embedding_explorer.py
+python -m streamlit run app/embedding_explorer.py --server.fileWatcherType none

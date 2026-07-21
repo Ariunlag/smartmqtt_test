@@ -47,6 +47,15 @@ from app.embedding_engine import (
     threshold_to_eps,
 )
 from app.synthetic_benchmark import build_synthetic_records, expected_evaluation_label, synthetic_group_counts
+from app.experiment_config import (
+    DATA_SOURCE_OPTIONS,
+    GENERATED_DATA,
+    MIXED_DATA,
+    REAL_DATA,
+    clustering_parameter_limits,
+    load_experiment_source,
+    validate_clustering_parameters,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,7 +66,6 @@ REAL_INPUT_FILES = (
     ROOT / "data" / "processed" / "04_open_air_topic_texts.jsonl",
 )
 DATASET_NAMES = ("sgim", "beach_weather", "beach_water", "open_air")
-DATA_SOURCE_OPTIONS = ("Real datasets", "Generated benchmark", "Real + generated benchmark")
 REQUIRED_BASES = {
     VALUE_ONLY: (VALUE_ONLY,),
     KEY_ONLY: (KEY_ONLY,),
@@ -87,7 +95,7 @@ def cached_records(signatures: tuple[tuple[str, int, int], ...]) -> list[dict[st
 def cached_base_bundle(
     records: Sequence[Mapping[str, Any]], model_name: str, strategy: str, data_source: str
 ) -> EmbeddingBundle:
-    source_slug = {DATA_SOURCE_OPTIONS[0]: "real", DATA_SOURCE_OPTIONS[1]: "synthetic", DATA_SOURCE_OPTIONS[2]: "mixed"}[data_source]
+    source_slug = {REAL_DATA: "real", GENERATED_DATA: "synthetic", MIXED_DATA: "mixed"}[data_source]
     cache_path = ROOT / "embedding_cache" / safe_model_name(model_name) / source_slug / f"{strategy.lower()}.npz"
     return get_or_create_embedding_cache(
         cache_path, records, strategy, model_name, lambda: cached_model(model_name)
@@ -107,17 +115,6 @@ def file_signatures() -> tuple[tuple[str, int, int], ...]:
 @st.cache_data(show_spinner=False)
 def cached_synthetic_records() -> list[dict[str, str]]:
     return build_synthetic_records()
-
-
-def records_for_source(
-    data_source: str, signatures: tuple[tuple[str, int, int], ...]
-) -> list[dict[str, Any]]:
-    if data_source == DATA_SOURCE_OPTIONS[0]:
-        return cached_records(signatures)
-    synthetic = [dict(row) for row in cached_synthetic_records()]
-    if data_source == DATA_SOURCE_OPTIONS[1]:
-        return synthetic
-    return [*cached_records(signatures), *synthetic]
 
 
 def required_bases(selected_representations: Sequence[str]) -> tuple[str, ...]:
@@ -583,20 +580,27 @@ st.info(
     "The same ordered topics and selected clustering parameters are held constant across representations. Similarity does not prove scientific equivalence."
 )
 
-try:
-    signatures = file_signatures()
-except (FileNotFoundError, ValueError) as error:
-    st.error(f"Cannot load topic-text inputs: {error}")
-    st.stop()
-
 st.session_state.setdefault("experiment_requested", False)
 st.session_state.setdefault("data_source", DATA_SOURCE_OPTIONS[0])
 with st.sidebar:
     st.header("Experiment controls")
     data_source = st.selectbox("Experiment data", DATA_SOURCE_OPTIONS, key="data_source")
-    records = records_for_source(data_source, signatures)
-    synthetic_only = data_source == DATA_SOURCE_OPTIONS[1]
-    dataset_options = ["synthetic"] if synthetic_only else [*DATASET_NAMES, "synthetic"] if data_source == DATA_SOURCE_OPTIONS[2] else list(DATASET_NAMES)
+
+try:
+    loaded_source = load_experiment_source(
+        data_source,
+        signature_loader=file_signatures,
+        real_loader=cached_records,
+        synthetic_loader=cached_synthetic_records,
+    )
+    records = loaded_source.records
+except (FileNotFoundError, ValueError) as error:
+    st.error(f"Cannot load topic-text inputs for {data_source}: {error}")
+    st.stop()
+
+with st.sidebar:
+    synthetic_only = data_source == GENERATED_DATA
+    dataset_options = ["synthetic"] if synthetic_only else [*DATASET_NAMES, "synthetic"] if data_source == MIXED_DATA else list(DATASET_NAMES)
     selection_key = f"dataset_selection_{data_source}"
     default_datasets = ["synthetic"] if synthetic_only else dataset_options
     st.session_state.setdefault(selection_key, default_datasets)
@@ -614,12 +618,18 @@ with st.sidebar:
         if right.button("Clear all", key=f"clear-all-datasets-{data_source}"):
             st.session_state[selection_key] = []
             st.rerun()
-    if data_source != DATA_SOURCE_OPTIONS[0]:
+    if data_source != REAL_DATA:
         generated = [record for record in records if record["dataset"] == "synthetic"]
         st.caption(f"Generated records: {len(generated)}")
         st.caption(f"Expected groups: {synthetic_group_counts(generated)}")
-    selected_count = sum(1 for record in records if record["dataset"] in selected_datasets)
     dataset_mode = st.selectbox("Dataset mode", DATASET_MODES, index=0)
+    limit_error: str | None = None
+    limits = None
+    if selected_datasets:
+        try:
+            limits = clustering_parameter_limits(records, selected_datasets, dataset_mode)
+        except ValueError as error:
+            limit_error = str(error)
     selected_representations = st.multiselect(
         "Representations", REPRESENTATIONS, default=list(REPRESENTATIONS)
     )
@@ -642,9 +652,15 @@ with st.sidebar:
         k = None
         if method == DEFAULT_CLUSTERING_METHOD:
             threshold = st.slider("Similarity threshold", 0.50, 0.99, 0.80, 0.01)
-            min_samples = st.number_input("Minimum samples", 2, max(2, selected_count), 2, 1)
+            max_min_samples = limits.maximum_min_samples if limits is not None else 2
+            min_samples = st.number_input("Minimum samples", 2, max(2, max_min_samples), 2, 1)
         else:
-            k = st.number_input("Number of clusters (K)", 2, max(2, selected_count), min(20, max(2, selected_count)), 1)
+            max_k = limits.maximum_k if limits is not None else 2
+            k = st.number_input("Number of clusters (K)", 2, max(2, max_k), min(20, max(2, max_k)), 1)
+            if dataset_mode == DATASET_MODES[1]:
+                st.caption(
+                    "In separate mode, K is limited by the smallest selected dataset because the same K is applied independently to every selected dataset."
+                )
         representative_limit = st.number_input("Top representatives per cluster", 1, 20, 5, 1)
         include_noise = st.toggle("Include noise", value=True)
         show_all_members = st.toggle("Show all cluster members", value=False)
@@ -655,6 +671,9 @@ if submitted:
     st.session_state.experiment_requested = True
 if not selected_datasets:
     st.warning("Select at least one dataset.")
+    st.stop()
+if limit_error is not None or limits is None:
+    st.error(limit_error or "Unable to calculate clustering parameter limits.")
     st.stop()
 if not selected_representations:
     st.warning("Select at least one representation.")
@@ -670,6 +689,11 @@ parameters = ClusteringParameters(
     method=method,
     k=int(k) if k is not None else None,
 )
+try:
+    validate_clustering_parameters(parameters, limits)
+except ValueError as error:
+    st.error(str(error))
+    st.stop()
 try:
     needed = required_bases(selected_representations)
     with st.spinner("Loading or creating base embedding caches…"):
